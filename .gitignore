@@ -1,7 +1,8 @@
 *.DS_Store
 notes.md
-Commons/
 *.jpeg
 *.png
 *.jpg
 Screenshoots/
+.vscode
+commons.cpp
