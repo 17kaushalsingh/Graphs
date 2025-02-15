@@ -1,4 +1,8 @@
-#include "../commons.cpp"
+#include <iostream>
+#include <vector>
+#include <queue>
+
+using namespace std;
 
 void dfsTraversal(int node, vector<int> adj[], vector<bool> &isVisited, vector<int> &dfsTraversalAns)
 {
@@ -12,6 +16,18 @@ void dfsTraversal(int node, vector<int> adj[], vector<bool> &isVisited, vector<i
             dfsTraversal(adjNode, adj, isVisited, dfsTraversalAns);
         }
     }
+}
+
+static void printArray(vector<int> &arr)
+{
+    int n = arr.size();
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+
+    cout << endl;
 }
 
 int main()
@@ -39,7 +55,7 @@ int main()
         if (!isVisited[node]) dfsTraversal(node, adj, isVisited, dfsTraversalAns);
     }
 
-    GraphUtils::printArray(dfsTraversalAns);
+    printArray(dfsTraversalAns);
 
     return 0;
 }
