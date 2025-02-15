@@ -69,6 +69,13 @@ https://www.geeksforgeeks.org/problems/rotten-oranges2536/1?utm_source=youtube&u
 
 # Cycle Detection
 ## Undirected Graph Using BFS
+- Try to visit all the children (neighbours) of a node which are not parents
+- If such a node is already visited by someone else
+- It means there is a cycle
+
+https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1?itm_source=geeksforgeeks&itm_medium=article&itm_campaign=practice_card
+![alt text](image-11.png)
+![alt text](image-12.png)
 
 
 ## Lec 12
