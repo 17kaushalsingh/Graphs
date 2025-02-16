@@ -86,9 +86,16 @@ https://www.geeksforgeeks.org/problems/replace-os-with-xs0052/1?utm_source=youtu
 
 
 ## Number of Enclaves: Multisource BFS
+https://www.geeksforgeeks.org/problems/number-of-enclaves/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=number-of-enclaves
+![alt text](image-21.png)
+![alt text](image-22.png)
+![alt text](image-23.png)
+![alt text](image-24.png)
+![alt text](image-25.png)
 
 
 ## Number of Distinct Islands
+https://www.geeksforgeeks.org/problems/number-of-distinct-islands/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=number-of-distinct-islands
 
 
 # Cycle Detection
