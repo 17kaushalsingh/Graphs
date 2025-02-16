@@ -104,10 +104,11 @@ https://www.geeksforgeeks.org/problems/number-of-distinct-islands/1?utm_source=y
 
 
 # Cycle Detection
-## Undirected Graph Using BFS
 - Try to visit all the children (neighbours) of a node which are not parents
 - If such a node is already visited by someone else
 - It means there is a cycle
+
+## Undirected Graph Using BFS
 
 https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1?itm_source=geeksforgeeks&itm_medium=article&itm_campaign=practice_card
 ![alt text](image-11.png)
@@ -120,18 +121,24 @@ https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1?itm
 
 
 # Bipartite Graphs
+- If you can color the graph with two colors such that no two adjacent nodes have the same color
+- Then it is a bipartite graph
+- A bipartite graph is a type of graph in which the set of vertices can be divided into two distinct groups (or partitions) such that no two vertices within the same group are adjacent.
+- In other words, all edges in the graph connect a vertex from one group to a vertex in the other group.
+- A bipartite graph can be colored with two colors such that no two adjacent vertices share the same color. This means we can divide the graph’s vertices into two distinct sets where:
+- All edges connect vertices from one set to vertices in the other set.
+- No edges exist between vertices within the same set.
 
+## Properties of Bipartite Graphs:
+- No Odd-Length Cycles: A graph is bipartite if and only if it does not contain a cycle of odd length.
+- 2-Colorability: A bipartite graph can be colored using only two colors so that no two adjacent vertices have the same color.
+- Matching and Maximum Matching: Bipartite graphs are useful in optimization problems, such as maximum matching in job assignment problems.
 
-## Lec 15
+## Checking for Bipartite Graph Using BFS
+https://www.geeksforgeeks.org/problems/bipartite-graph/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=bipartite-graph
+![alt text](image-28.png)
 
-
-## Lec 16
-
-
-## Lec 17
-
-
-## Lec 18
+## Checking for Bipartite Graph Using DFS
 
 
 ## Lec 19
