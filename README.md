@@ -67,6 +67,23 @@ https://www.geeksforgeeks.org/problems/rotten-oranges2536/1?utm_source=youtube&u
 ![alt text](image-9.png)
 ![alt text](image-10.png)
 
+
+## Distance of Neareset Cell Having 1
+https://www.geeksforgeeks.org/problems/distance-of-nearest-cell-having-1-1587115620/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=distance-of-nearest-cell-having-1
+![alt text](image-14.png)
+![alt text](image-15.png)
+![alt text](image-16.png)
+
+
+## Surrounded Regions: Replace Os with Xs
+
+
+## Number of Enclaves: Multisource BFS
+
+
+## Number of Distinct Islands
+
+
 # Cycle Detection
 ## Undirected Graph Using BFS
 - Try to visit all the children (neighbours) of a node which are not parents
@@ -82,10 +99,8 @@ https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1?itm
 https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1?itm_source=geeksforgeeks&itm_medium=article&itm_campaign=practice_card
 ![alt text](image-13.png)
 
-## Lec 13
 
-
-## Lec 14
+# Bipartite Graphs
 
 
 ## Lec 15
