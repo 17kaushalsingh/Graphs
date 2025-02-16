@@ -76,6 +76,13 @@ https://www.geeksforgeeks.org/problems/distance-of-nearest-cell-having-1-1587115
 
 
 ## Surrounded Regions: Replace Os with Xs
+https://www.geeksforgeeks.org/problems/replace-os-with-xs0052/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=replace-os-with-xs
+- Figure out the Os on the boundary and any other Os connected with it
+- Replace all other 0s except those found out
+![alt text](image-17.png)
+![alt text](image-18.png)
+![alt text](image-19.png)
+![alt text](image-20.png)
 
 
 ## Number of Enclaves: Multisource BFS
