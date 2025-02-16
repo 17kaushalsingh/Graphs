@@ -139,7 +139,8 @@ https://www.geeksforgeeks.org/problems/bipartite-graph/1?utm_source=youtube&utm_
 ![alt text](image-28.png)
 
 ## Checking for Bipartite Graph Using DFS
-
+https://www.geeksforgeeks.org/problems/bipartite-graph/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=bipartite-graph
+![alt text](image-29.png)
 
 ## Lec 19
 
