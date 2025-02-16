@@ -96,6 +96,11 @@ https://www.geeksforgeeks.org/problems/number-of-enclaves/1?utm_source=youtube&u
 
 ## Number of Distinct Islands
 https://www.geeksforgeeks.org/problems/number-of-distinct-islands/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=number-of-distinct-islands
+- Use base row and base col to distinguish identity of islands
+- Subtrcat all cells from the coordinats of base cell
+- Require a set to keep track of distinct elements
+![alt text](image-26.png)
+![alt text](image-27.png)
 
 
 # Cycle Detection
