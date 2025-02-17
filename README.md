@@ -147,8 +147,14 @@ https://www.geeksforgeeks.org/problems/bipartite-graph/1?utm_source=youtube&utm_
 https://www.geeksforgeeks.org/problems/bipartite-graph/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=bipartite-graph
 ![alt text](image-29.png)
 
-# Lec 19
-
+# Topological Sorting
+- Only exists for DAG (Directed Acyclic Graphs)
+- Any linear ordering of nodes such that
+- If there is an edge between u and v
+- u always appers before v in the sorted list
+https://www.geeksforgeeks.org/problems/topological-sort/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=topological-sort
+![alt text](image-32.png)
+![alt text](image-33.png)
 
 ## Lec 20
 
