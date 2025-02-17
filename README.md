@@ -119,6 +119,11 @@ https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1?itm
 https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1?itm_source=geeksforgeeks&itm_medium=article&itm_campaign=practice_card
 ![alt text](image-13.png)
 
+## Directed Graph Using DFS
+- Use a path visited array
+https://www.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=detect-cycle-in-a-directed-graph
+![alt text](image-30.png)
+![alt text](image-31.png)
 
 # Bipartite Graphs
 - If you can color the graph with two colors such that no two adjacent nodes have the same color
@@ -142,7 +147,7 @@ https://www.geeksforgeeks.org/problems/bipartite-graph/1?utm_source=youtube&utm_
 https://www.geeksforgeeks.org/problems/bipartite-graph/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=bipartite-graph
 ![alt text](image-29.png)
 
-## Lec 19
+# Lec 19
 
 
 ## Lec 20
