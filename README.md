@@ -638,19 +638,143 @@ class Solution
 ## Undirected Graph Using BFS
 
 https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1?itm_source=geeksforgeeks&itm_medium=article&itm_campaign=practice_card
-![alt text](image-11.png)
-![alt text](image-12.png)
+```cpp
+class Solution {
+  public:
+    bool detectCycle(int node, vector<vector<int>> adj, vector<bool> &isVisited)
+    {
+        queue<pair<int, int>> q;
+        q.push(make_pair(node, -1));
+        isVisited[node] = true;
+    
+        while(!q.empty())
+        {
+            auto front = q.front();
+            q.pop();
+    
+            int frontNode = front.first;
+            int parent = front.second;
+    
+            for (auto adjNode : adj[frontNode])
+            {
+                if (adjNode == parent) continue;
+    
+                if (isVisited[adjNode]) return true;
+    
+                q.push(make_pair(adjNode, frontNode));
+                isVisited[adjNode] = true;
+            }
+        }
+    
+        return false;
+    }
 
+    bool isCycle(vector<vector<int>>& adj) 
+    {
+        int n = adj.size();
+        
+        vector<bool> isVisited(n, false);
+    
+        for (int node=0; node<n; node++)
+        {
+            if (!isVisited[node])
+            {
+                if(detectCycle(node, adj, isVisited)) return true;
+            }
+        }
+        
+        return false;
+    }
+};
+```
 
 ## Undirected Graph Using DFS
 https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1?itm_source=geeksforgeeks&itm_medium=article&itm_campaign=practice_card
-![alt text](image-13.png)
+```cpp
+class Solution {
+  public:
+    bool detectCycle(int node, int parent, vector<vector<int>>& adj, vector<bool> &isVisited)
+    {
+        isVisited[node] = true;
+    
+        for (auto adjNode : adj[node])
+        {
+            if (adjNode == parent) continue;
+    
+            if (isVisited[adjNode]) return true; // cycle detected
+            
+            if (detectCycle(adjNode, node, adj, isVisited) == true) return true; // cycle detected
+        }
+    
+        return false;
+    }
+
+    bool isCycle(vector<vector<int>>& adj) 
+    {
+        int n = adj.size();
+        
+        vector<bool> isVisited(n, false);
+    
+        for (int node=0; node<n; node++)
+        {
+            if (!isVisited[node])
+            {
+                if(detectCycle(node, -1, adj, isVisited)) return true;
+            }
+        }
+        
+        return false;
+    }
+};
+```
 
 ## Directed Graph Using DFS
 - Use a path visited array
 https://www.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=detect-cycle-in-a-directed-graph
-![alt text](image-30.png)
-![alt text](image-31.png)
+```cpp
+class Solution 
+{
+  private:
+    bool checkForCycle(int node, vector<vector<int>> &adj, vector<bool> &isVisited, vector<bool> &isPathVisited)
+    {
+        isVisited[node] = true;
+        isPathVisited[node] = true;
+        
+        for (auto adjNode : adj[node])
+        {
+            if (!isVisited[adjNode])
+            {
+                if (checkForCycle(adjNode, adj, isVisited, isPathVisited)) return true;
+            }
+            
+            if (isPathVisited[adjNode]) return true;
+        }
+        
+        isPathVisited[node] = false;
+        
+        return false;
+    }
+    
+  public:
+    // Function to detect cycle in a directed graph.
+    bool isCyclic(vector<vector<int>> &adj) 
+    {
+        int n = adj.size();
+        
+        vector<bool> isVisited(n, false), isPathVisited(n, false);
+        
+        for (int i=0; i<n; i++)
+        {
+            if (!isVisited[i])
+            {
+                if (checkForCycle(i, adj, isVisited, isPathVisited)) return true;
+            }
+        }
+        
+        return false;
+    }
+};
+```
 
 # Bipartite Graphs
 - If you can color the graph with two colors such that no two adjacent nodes have the same color
