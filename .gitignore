@@ -1,4 +1,2 @@
-# *.DS_Store
-# # *.png
-# Screenshoots/
-# .vscode
+*.DS_Store
+.vscode
