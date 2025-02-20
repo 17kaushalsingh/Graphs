@@ -881,9 +881,51 @@ class Solution
 - Any linear ordering of nodes such that
 - If there is an edge between u and v
 - u always appers before v in the sorted list
+
+## DFS Implementation
 https://www.geeksforgeeks.org/problems/topological-sort/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=topological-sort
-![alt text](image-32.png)
-![alt text](image-33.png)
+```cpp
+class Solution 
+{
+  private:
+    void dfs(int node, vector<vector<int>> &adj, vector<bool> &isVisited, stack<int> &st)
+    {
+        isVisited[node] = true;
+        
+        for (auto adjNode : adj[node])
+        {
+            if (!isVisited[adjNode]) dfs(adjNode, adj, isVisited, st);
+        }
+        
+        st.push(node);
+    }
+  public:
+
+    vector<int> topologicalSort(vector<vector<int>>& adj) 
+    {
+        int n = adj.size();
+        
+        stack<int> st;
+        vector<bool> isVisited(n, false);
+        
+        for (int i=0; i<n; i++)
+        {
+            if (!isVisited[i]) dfs(i, adj, isVisited, st);
+        }
+        
+        vector<int> topo;
+        while(!st.empty())
+        {
+            topo.push_back(st.top());
+            st.pop();
+        }
+        
+        return topo;
+    }
+};
+```
+
+## BFS Implementation Kahn's Algorithm
 
 ## Lec 20
 
