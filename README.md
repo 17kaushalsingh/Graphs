@@ -977,8 +977,55 @@ class Solution
 ```
 
 ## BFS Implementation Kahn's Algorithm
-
+- use inDegree array
+https://www.geeksforgeeks.org/problems/topological-sort/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=topological-sort
 ```cpp
+class Solution 
+{
+  private:
+    
+  public:
+    // Function to return list containing vertices in Topological order.
+    vector<int> topologicalSort(vector<vector<int>>& adj) 
+    {
+        int n = adj.size();
+        
+        // get indegree of all the nodes
+        vector<int> inDegree(n, 0);
+        for (int u=0; u<n; u++)
+        {
+            for (auto v : adj[u])
+            {
+                //Edge: u --> v
+                inDegree[v]++;
+            }
+        }
+        
+        // put all elements with inDegree 0 to queue
+        queue<int> q;
+        
+        for (int i=0; i<n; i++) if (inDegree[i] == 0) q.push(i);
+        
+        // start processing the queue and put front elements with inDegree 0 in ans
+        vector<int> topoSort;
+        while(!q.empty())
+        {
+            int node = q.front();
+            q.pop();
+            
+            topoSort.push_back(node);
+            
+            for (auto adjNode : adj[node])
+            {
+                // Edge: node --> adjNode
+                inDegree[adjNode]--;
+                
+                if (inDegree[adjNode] == 0) q.push(adjNode);
+            }
+        }
+        
+        return topoSort;
+    }
 ```
 
 ## Lec 20
