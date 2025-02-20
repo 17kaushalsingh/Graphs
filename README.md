@@ -776,6 +776,57 @@ class Solution
 };
 ```
 
+## Eventual Safe States
+- Everyone who is part of the cycle 
+- And everyone who leads to a cycle can not be a safe node
+- All others are safe nodes
+https://www.geeksforgeeks.org/problems/eventual-safe-states/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=eventual-safe-states
+```cpp
+class Solution 
+{
+  private:
+    bool dfs(int node, vector<int> adj[], vector<bool> &isVisited, vector<bool> &isPathVisited, vector<bool> &isSafeNode)
+    {
+       isVisited[node] = true;
+       isPathVisited[node] = true;
+       isSafeNode[node] = false;
+       
+       for (auto adjNode : adj[node])
+       {
+           if (!isVisited[adjNode])
+           {
+               if (dfs(adjNode, adj, isVisited, isPathVisited, isSafeNode)) return true;
+           }
+           
+           else if (isPathVisited[adjNode]) return true;
+       }
+       
+       isPathVisited[node] = false;
+       isSafeNode[node] = true;
+       return false;
+    }
+  public:
+    vector<int> eventualSafeNodes(int V, vector<int> adj[]) 
+    {
+        int n = V;
+        
+        vector<bool> isVisited(n, false);
+        vector<bool> isPathVisited(n, false);
+        vector<bool> isSafeNode(n, false);
+        
+        for (int i=0; i<n; i++)
+        {
+            if (!isVisited[i]) dfs(i, adj, isVisited, isPathVisited, isSafeNode);
+        }
+        
+        vector<int> safeNodes;
+        for (int i=0; i<n; i++) if (isSafeNode[i]) safeNodes.push_back(i);
+        
+        return safeNodes;
+    }
+};
+```
+
 # Bipartite Graphs
 - If you can color the graph with two colors such that no two adjacent nodes have the same color
 - Then it is a bipartite graph
