@@ -792,11 +792,89 @@ class Solution
 
 ## Checking for Bipartite Graph Using BFS
 https://www.geeksforgeeks.org/problems/bipartite-graph/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=bipartite-graph
-![alt text](image-28.png)
+```cpp
+class Solution {
+  public:
+    bool isBipartite(vector<vector<int>>& adj) 
+    {
+        int n = adj.size();
+        
+        queue<pair<int, int>> q; // node, color
+        vector<int> color(n, -1);
+        // -1 not visited
+        // 0 red
+        // 1 black
+        
+        q.push({0,0});
+        color[0] = 0;
+        
+        while(!q.empty())
+        {
+            int node = q.front().first;
+            int col = q.front().second;
+            q.pop();
+            
+            for (auto adjNode : adj[node])
+            {
+                if (color[adjNode] == -1) // not yet touched
+                {
+                    int ncolor;
+                    (col == 0) ? (ncolor = 1) : (ncolor = 0);
+                    q.push({adjNode, ncolor});
+                    color[adjNode] = ncolor;
+                }
+                
+                else if (color[adjNode] == col) return false;
+            }
+        }
+        
+        return true;
+    }
+};
+```
 
 ## Checking for Bipartite Graph Using DFS
 https://www.geeksforgeeks.org/problems/bipartite-graph/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=bipartite-graph
-![alt text](image-29.png)
+```cpp
+class Solution 
+{
+  private:
+    bool dfs(int node, int col, vector<vector<int>> &adj, vector<int> &color)
+    {
+        color[node] = col;
+        
+        for (auto adjNode : adj[node])
+        {
+            if (color[adjNode] == -1)
+            {
+                int ncolor = (col == 0) ? 1 : 0;
+                if (dfs(adjNode, ncolor, adj, color) == false) return false;
+            }
+            
+            if (color[adjNode] == col) return false;
+        }
+        
+        return true;
+    }
+  public:
+    bool isBipartite(vector<vector<int>>& adj) 
+    {
+        int n = adj.size();
+        vector<int> color(n, -1);
+        
+        for (int i=0; i<n; i++)
+        {
+            if (color[i] == -1)
+            {
+                if (dfs(i, 0, adj, color) == false) return false;
+            }
+        }
+        
+        return true;
+        
+    }
+};
+```
 
 # Topological Sorting
 - Only exists for DAG (Directed Acyclic Graphs)
