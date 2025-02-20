@@ -776,6 +776,55 @@ class Solution
 };
 ```
 
+## Directed Graph Usinf BFS (Kahns Algorithm OR Topo Sort)
+- Check if the topoSort.size() == n_nodes
+https://www.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=detect-cycle-in-a-directed-graph
+```cpp
+class Solution 
+{
+  private:
+    vector<int> getTopoSort(int n, vector<vector<int>> &adj)
+    {
+        vector<int> topo;
+        
+        vector<int> inDeg(n, 0);
+        for (int i=0; i<n; i++)
+        {
+            for (auto adjNode : adj[i]) inDeg[adjNode]++;
+        }
+        
+        queue<int> q;
+        
+        for (int i=0; i<n; i++) if (inDeg[i] == 0) q.push(i);
+        
+        while(!q.empty())
+        {
+            int node = q.front();
+            q.pop();
+            topo.push_back(node);
+            
+            for (auto adjNode : adj[node])
+            {
+                inDeg[adjNode]--;
+                
+                if (inDeg[adjNode] == 0) q.push(adjNode);
+            }
+        }
+        
+        return topo;
+    }
+  public:
+    // Function to detect cycle in a directed graph.
+    bool isCyclic(vector<vector<int>> &adj) 
+    {
+        int n = adj.size();
+        
+        vector<int> topoSort = getTopoSort(n, adj);
+        
+        return (topoSort.size() != n);
+    }
+```
+
 ## Eventual Safe States
 - Everyone who is part of the cycle 
 - And everyone who leads to a cycle can not be a safe node
@@ -1027,15 +1076,6 @@ class Solution
         return topoSort;
     }
 ```
-
-## Lec 20
-
-
-## Lec 21
-
-
-## Lec 22
-
 
 ## Lec 23
 
