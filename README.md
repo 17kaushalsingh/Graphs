@@ -1195,7 +1195,68 @@ class Solution
 ```
 
 
-## Lec 25
+## Eventual Safe States
+- Reverse the edges of the graph
+- Perform a basic Topo Sort, return topo vector of the reversed graph
+https://www.geeksforgeeks.org/problems/eventual-safe-states/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=eventual-safe-states
+```cpp
+class Solution 
+{
+  public:
+  
+    
+  public:
+    vector<int> eventualSafeNodes(int V, vector<int> adj[]) 
+    {
+        int n = V;
+        
+        vector<int> revGraph[n];
+        
+        for (int i=0; i<n; i++)
+        {
+            for (auto adjNode : adj[i])
+            {
+                // i --> adjNode
+                // we want to reverse it
+                revGraph[adjNode].push_back(i);
+            }
+        }
+        
+        vector<int> inDeg(n, 0); // an array with size n and all entries marked as 0
+        
+        for (int i=0; i<n; i++)
+        {
+            for (auto adjNode : revGraph[i])
+            {
+                inDeg[adjNode]++;
+            }
+        }
+        
+        queue<int> q;
+        for (int node=0; node<n; node++) if(inDeg[node] == 0) q.push(node);
+        
+        vector<int> safeNodes;
+        while(!q.empty())
+        {
+            int node = q.front();
+            q.pop();
+            
+            safeNodes.push_back(node);
+            
+            for (auto adjNode : revGraph[node])
+            {
+                inDeg[adjNode]--;
+                
+                if (inDeg[adjNode] == 0) q.push(adjNode);
+            }
+        }
+        
+        sort(safeNodes.begin(), safeNodes.end());
+        
+        return safeNodes;
+    }
+};
+```
 
 
 ## Lec 26
@@ -1289,3 +1350,7 @@ class Solution
 
 
 ## Lec 56
+
+
+## Left lectures
+Lec 25
