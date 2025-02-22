@@ -1259,7 +1259,117 @@ class Solution
 ```
 
 
-## Lec 26
+## Alien Dictionary
+- Represent chars as nodes of a graph
+- Figure out why a word appears before the other and create the graph basis that
+- Apply topologocal sort
+https://www.geeksforgeeks.org/problems/alien-dictionary/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=alien-dictionary
+```cpp
+class Solution 
+{
+private:
+    // Helper function
+    // checks if order is invalid when w1 is longer than w2 and w2 is a prefix of w1
+    bool checkInvalidOrder(string &w1, string &w2) 
+    {
+        if (w1.size() > w2.size() && w1.substr(0, w2.size()) == w2) return true;
+
+        return false;
+    }
+    
+    vector<int> getTopoSort(int n, vector<int> adj[], vector<int> &inDeg, vector<bool> &exists) {
+        queue<int> q;
+        for (int i = 0; i < n; i++) 
+        {
+            if (inDeg[i] == 0 && exists[i]) q.push(i);
+        }
+        
+        vector<int> topo;
+        while (!q.empty()) 
+        {
+            int node = q.front();
+            q.pop();
+            topo.push_back(node);
+            
+            for (int adjNode : adj[node]) 
+            {
+                inDeg[adjNode]--;
+                if (inDeg[adjNode] == 0 && exists[adjNode]) q.push(adjNode);
+            }
+        }
+        
+        return topo;
+    }
+    
+public:
+    string findOrder(vector<string>& words) 
+    {
+        int n = words.size();
+        
+        // adjacency list and in-degree array
+        vector<int> adj[26];
+        vector<int> inDeg(26, 0);
+        vector<bool> exists(26, false);  // Track which characters exist
+        
+        // Mark existing characters
+        for (string word : words) 
+        {
+            for (char ch : word) exists[ch - 'a'] = true;
+        }
+        
+        // Build graph from adjacent words
+        for (int i = 0; i < n - 1; i++) 
+        {
+            string w1 = words[i];
+            string w2 = words[i + 1];
+            
+            // Check invalid case: if w1 is longer and w2 is prefix of w1
+            if (checkInvalidOrder(w1, w2)) return "";
+            
+            // Find first differing character
+            int len = min(w1.size(), w2.size());
+            
+            for (int j = 0; j < len; j++) 
+            {
+                if (w1[j] != w2[j]) 
+                {
+                    int u = w1[j] - 'a';
+                    int v = w2[j] - 'a';
+                    adj[u].push_back(v);
+                    inDeg[v]++;
+                    break;
+                }
+            }
+        }
+        
+        // Get topological sort
+        vector<int> topo = getTopoSort(26, adj, inDeg, exists);
+        
+        // Check for cycle: if topo sort doesn't include all nodes with edges
+        int count = 0;
+        for (int i = 0; i < 26; i++) 
+        {
+            if (exists[i]) count++;
+        }
+        
+        string ans = "";
+        
+        // Cycle detected
+        if (topo.size() != count) return ans;
+
+        // Construct result string
+        for (int x : topo) 
+        {
+            if (exists[x]) 
+            {
+                ans += (char)(x + 'a');
+            }
+        }
+        
+        return ans;
+    }
+};
+```
 
 
 ## Lec 27
