@@ -124,12 +124,14 @@ class Solution {
 ## Word Ladder 2
 
 # Dijkstras Algorithm
+- TC: E logV
+- Can be done via Queue, PriorityQueue or Set
 
 ## Using Priority Queue
 - Require a minHeap data structure
 - Does not work for cycles and negative edge weights
 - TC: E logV
-- Why PQ: 
+- Why PQ: Saves some iterations
 https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=implementing-dijkstra-set-1-adjacency-matrix
 ```cpp
 class Solution {

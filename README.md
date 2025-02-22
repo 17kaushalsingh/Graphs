@@ -19,4 +19,4 @@
 
 ## Progress
 
-![Progress Pie Chart](https://quickchart.io/chart?c={type:'pie',data:{labels:['Current','Remaining'],datasets:[{data:[27,29]}]}})
+![Progress Pie Chart](https://quickchart.io/chart?c={type:'pie',data:{labels:['Current','Remaining'],datasets:[{data:[34,22]}]}})
