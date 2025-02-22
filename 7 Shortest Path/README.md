@@ -78,3 +78,43 @@ class Solution
 };
 ```
 
+## Undirected Acyclic Graph - Unit Weights - Plain BFS
+- Plain BFS with relaxation of edges
+https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph-having-unit-distance/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=shortest-path-in-undirected-graph-having-unit-distance
+```cpp
+class Solution {
+  public:
+    // Function to find the shortest path from source to all other nodes
+    vector<int> shortestPath(vector<vector<int>>& adj, int src) 
+    {
+        int n = adj.size();
+        
+        queue<pair<int, int>> q; // node, dst
+        vector<int> shortestDst(n, INT_MAX);
+        
+        shortestDst[src] = 0;
+        q.push({src, 0});
+        
+        while(!q.empty())
+        {
+            int node = q.front().first;
+            int dst = q.front().second;
+            q.pop();
+            
+            for (auto adjNode : adj[node])
+            {
+                // if reachable at the current node and get a better way, relax the edge
+                if (shortestDst[node] != INT_MAX && dst + 1 < shortestDst[adjNode])
+                {
+                    shortestDst[adjNode] = dst + 1;
+                    q.push({adjNode, dst + 1});
+                }
+            }
+        }
+        
+        for (int i=0; i<n; i++) if (shortestDst[i] == INT_MAX) shortestDst[i] = -1;
+        
+        return shortestDst;
+    }
+};
+```
