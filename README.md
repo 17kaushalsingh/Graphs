@@ -14,7 +14,7 @@
 
 ## Revision Lectures
 - Lec 26
-- Lec 28, 29 (Word Ladder problems)
+- Lec 29, 30, 31 (Word Ladder problems)
 - 
 
 ## Progress
