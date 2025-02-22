@@ -53,3 +53,45 @@ class Solution {
 - Set can erase some elements to optimize the iterations
 - Investing logN to delete an element and save some iterations later
 - So can say much about which is better in terms of TC
+https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=implementing-dijkstra-set-1-adjacency-matrix
+```cpp
+class Solution {
+  public:
+    // Function to find the shortest distance of all the vertices
+    // from the source vertex src.
+    vector<int> dijkstra(vector<vector<pair<int, int>>> &adj, int src) 
+    {
+        int n = adj.size();
+        
+        vector<int> shortestDst(n, INT_MAX);
+        set<pair<int, int>> set;
+        
+        set.insert({0, src});
+        shortestDst[src] = 0;
+        
+        while(!set.empty())
+        {
+            auto it = *(set.begin());
+            int dst = it.first;
+            int node = it.second;
+            set.erase(it);
+            
+            for (auto it : adj[node])
+            {
+                int wt = it.second;
+                int adjNode = it.first;
+                
+                if (dst + wt < shortestDst[adjNode])
+                {
+                    if (shortestDst[adjNode] != INT_MAX) set.erase({shortestDst[adjNode], adjNode});
+                    
+                    shortestDst[adjNode] = dst + wt;
+                    set.insert({dst+wt, adjNode});
+                }
+            }
+        }
+        
+        return shortestDst;
+    }
+};
+```
