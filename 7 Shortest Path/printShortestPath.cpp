@@ -21,7 +21,7 @@ class Solution {
             adj[v].push_back({u, wt});
         }
         
-        priority_queue<pair<int, int>> pq; // dst, node
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq; // dst, node
         vector<int> shortestDst(n+1, INT_MAX);
         vector<int> parent(n+1, -1);
         

@@ -14,7 +14,7 @@ class Solution {
     {
         int n = adj.size();
         
-        priority_queue<pair<int, int>> pq;
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
         vector<int> shortestDst(n, INT_MAX);
         
         pq.push({0, src});

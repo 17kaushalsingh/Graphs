@@ -142,7 +142,7 @@ class Solution {
     {
         int n = adj.size();
         
-        priority_queue<pair<int, int>> pq;
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
         vector<int> shortestDst(n, INT_MAX);
         
         pq.push({0, src});
@@ -244,7 +244,7 @@ class Solution {
             adj[v].push_back({u, wt});
         }
         
-        priority_queue<pair<int, int>> pq; // dst, node
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq; // dst, node
         vector<int> shortestDst(n+1, INT_MAX);
         vector<int> parent(n+1, -1);
         
@@ -301,3 +301,8 @@ class Solution {
 };
 ```
 
+## Shortest Distance in Binary Maze
+https://www.geeksforgeeks.org/problems/shortest-path-in-a-binary-maze-1655453161/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=shortest-path-in-a-binary-maze
+```cppp
+
+```
