@@ -366,3 +366,66 @@ class Solution
     }
 };
 ```
+
+## Path with Minimum Effort
+https://www.geeksforgeeks.org/problems/path-with-minimum-effort/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=path-with-minimum-effort
+```cpp
+class Solution 
+{
+  private:
+    bool isValid(int row, int col, int n, int m)
+    {
+        return (row >= 0 && row < n && col >= 0 && col < m);
+    }
+    
+  public:
+    int MinimumEffort(int rows, int columns, vector<vector<int>> &heights) 
+    {
+        // effort: max(abs diff in two consecutive cells of the root)
+        
+        vector<vector<int>> minimumEffort(rows, vector<int>(columns, INT_MAX));
+        // minEffort, row, col
+        priority_queue<pair<int, pair<int, int>>, vector<pair<int, pair<int, int>>>, greater<pair<int, pair<int, int>>>> pq;
+        
+        minimumEffort[0][0] = 0;
+        pq.push({0, {0, 0}});
+        
+        while(!pq.empty())
+        {
+            auto it = pq.top();
+            pq.pop();
+            
+            int effort = it.first;
+            int row = it.second.first;
+            int col = it.second.second;
+            
+            // iterate on neighbours
+            int delRow[] = {0, 0, -1, 1};
+            int delCol[] = {-1, 1, 0, 0};
+            
+            for (int i=0; i<4; i++)
+            {
+                int nrow = row + delRow[i];
+                int ncol = col + delCol[i];
+                
+                if (isValid(nrow, ncol, rows, columns))
+                {
+                    int newEffort = max(effort, abs(heights[row][col] - heights[nrow][ncol]));
+                    
+                    if (newEffort < minimumEffort[nrow][ncol])
+                    {
+                        minimumEffort[nrow][ncol] = newEffort;
+                        pq.push({newEffort, {nrow, ncol}});
+                    }
+                }
+            }
+        }
+        
+        return minimumEffort[rows-1][columns-1];
+    }
+};
+```
+
+
+
+## 
