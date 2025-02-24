@@ -428,4 +428,60 @@ class Solution
 
 
 
-## 
+## Cheapest Flights Within K Stops
+- Make decision based on stops rather than price
+- No PQ required
+https://www.geeksforgeeks.org/problems/cheapest-flights-within-k-stops/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=cheapest-flights-within-k-stops
+```cpp
+  public:
+    int CheapestFLight(int n, vector<vector<int>>& flights, int src, int dst, int K)  
+    {
+        vector<pair<int, int>> adj[n];
+        
+        for (flight : flights)
+        {
+            int u = flight[0];
+            int v = flight[1];
+            int wt = flight[2];
+            
+            adj[u].push_back({v, wt});
+        }
+        
+        queue<pair<int, pair<int, int>>> q; // stops, city, price
+        vector<int> minPrice(n, INT_MAX);
+        
+        q.push({0, {src, 0}});
+        minPrice[src] = 0;
+        
+        while(!q.empty())
+        {
+            auto it = q.front();
+            q.pop();
+            
+            int stops = it.first;
+            int city = it.second.first;
+            int price = it.second.second;
+            
+            if (stops > K) continue;
+            
+            // if (city == dst) continue;
+            
+            for (auto it : adj[city])
+            {
+                int adjCity = it.first;
+                int addPrice = it.second;
+                
+                if (price + addPrice < minPrice[adjCity])
+                {
+                    minPrice[adjCity] = price + addPrice;
+                    q.push({stops+1, {adjCity, price + addPrice}});
+                }
+            }
+        }
+        
+        int ans = minPrice[dst];
+        if (ans == INT_MAX) return -1;
+        return ans;
+    }
+};
+```
