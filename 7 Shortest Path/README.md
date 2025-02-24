@@ -640,3 +640,61 @@ public:
     }
 };
 ```
+
+# Bellman Ford Algorithm
+- Works for negative weight cycles and negative weights
+- Bellman is applicable only for DG
+- If undirected, represent it as directed with both way edges
+- TC: 
+## Algorithm
+- Edges can be in any order
+- Relax all edges in sequential order for n-1 times
+- Relax: dst[u] + wt < dst[v] ==> update dst[v]
+- If relaxation can be done for n-th time ==> Negative Weighted Cycle Detected
+## Code
+```cpp
+class Solution {
+  public:
+    /*  Function to implement Bellman Ford
+     *   edges: vector of vectors which represents the graph
+     *   src: source vertex
+     *   V: number of vertices
+     */
+    vector<int> bellmanFord(int V, vector<vector<int>>& edges, int src) 
+    {
+        int n = V;
+        int m = edges.size(); // edges
+        
+        vector<int> dst(n, 1e8);
+        dst[src] = 0;
+        
+        // n-1 times relaxation
+        for (int i=0; i<n-1; i++)
+        {
+            for (int i=0; i<m; i++)
+            {
+                int u = edges[i][0];
+                int v = edges[i][1];
+                int wt = edges[i][2];
+                
+                if (dst[u] != 1e8 && dst[u] + wt < dst[v])
+                {
+                    dst[v] = dst[u] + wt;
+                }
+            }
+        }
+        
+        // n-th relaxation to check for cycle
+        for (int i=0; i<m; i++)
+        {
+            int u = edges[i][0];
+            int v = edges[i][1];
+            int wt = edges[i][2];
+            
+            if (dst[u] != 1e8 && dst[u] + wt < dst[v]) return {-1};
+        }
+        
+        return dst;
+    }
+};
+```
