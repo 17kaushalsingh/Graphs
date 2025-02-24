@@ -651,6 +651,7 @@ public:
 - Relax all edges in sequential order for n-1 times
 - Relax: dst[u] + wt < dst[v] ==> update dst[v]
 - If relaxation can be done for n-th time ==> Negative Weighted Cycle Detected
+- Why N-1? Each iteration updates dst of 1 node
 ## Code
 ```cpp
 class Solution {
