@@ -532,4 +532,65 @@ class Solution
 };
 ```
 
+## Number of Ways to Arrive at a Destination
+- Have a ways array to count the num ways to arrive at a destination
+- == means a new path with same min dis/time
+- < means a new path with the better dis/time
+https://www.geeksforgeeks.org/problems/number-of-ways-to-arrive-at-destination/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=%2Fnumber-of-ways-to-arrive-at-destination
+```cpp
+class Solution 
+{
+    int mod = (int)(1e9 + 7);
+  public:
+    int countPaths(int n, vector<vector<int>>& roads) 
+    {
+        vector<vector<pair<int, int>>> adj(n);
+        
+        for (auto road : roads)
+        {
+            adj[road[0]].push_back({road[1], road[2]});
+            adj[road[1]].push_back({road[0], road[2]});
+        }
+        
+        vector<long long int> minTime(n, INT_MAX);
+        vector<long long int> ways(n, 0);
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq; // time, city
+        
+        minTime[0] = 0;
+        ways[0] = 1;
+        pq.push({0, 0});
+        
+        while(!pq.empty())
+        {
+            long long int time = pq.top().first;
+            int city = pq.top().second;
+            pq.pop();
+            
+            for (auto it : adj[city])
+            {
+                int adjCity = it.first;
+                long long int addTime = it.second;
+                
+                // new path with same time/dist
+                if (time + addTime == minTime[adjCity])
+                {
+                    ways[adjCity] = (ways[city] + ways[adjCity]) % mod;
+                }
+                
+                // new path with a better time/dist
+                // OR first time a adjCity is being reached with this 'time'
+                else if (time + addTime < minTime[adjCity]) 
+                {
+                    minTime[adjCity] = time + addTime;
+                    pq.push({time + addTime, adjCity});
+                    ways[adjCity] = ways[city];
+                }
+            }
+        }
+
+        return ways[n-1] % mod;
+    }
+};
+```
+
 ## 

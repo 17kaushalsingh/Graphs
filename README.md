@@ -12,11 +12,9 @@
 
 7. Shortest Path
 
+8. Minimum Spanning Tree
+
 ## Revision Lectures
 - Lec 26
 - Lec 29, 30, 31 (Word Ladder problems)
 - 
-
-## Progress
-
-![Progress Pie Chart](https://quickchart.io/chart?c={type:'pie',data:{labels:['Current','Remaining'],datasets:[{data:[34,22]}]}})
