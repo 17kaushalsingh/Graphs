@@ -29,11 +29,11 @@ class Solution {
         // n-1 times relaxation
         for (int i=0; i<n-1; i++)
         {
-            for (int i=0; i<m; i++)
+            for (auto edge : edges)
             {
-                int u = edges[i][0];
-                int v = edges[i][1];
-                int wt = edges[i][2];
+                int u = edge[0];
+                int v = edge[1];
+                int wt = edge[2];
                 
                 if (dst[u] != 1e8 && dst[u] + wt < dst[v])
                 {
@@ -42,14 +42,17 @@ class Solution {
             }
         }
         
-        // n-th relaxation to check for cycle
-        for (int i=0; i<m; i++)
+        // n-th relaxation to check for negative cycle
+        for (auto edge : edges)
         {
-            int u = edges[i][0];
-            int v = edges[i][1];
-            int wt = edges[i][2];
+            int u = edge[0];
+            int v = edge[1];
+            int wt = edge[2];
             
-            if (dst[u] != 1e8 && dst[u] + wt < dst[v]) return {-1};
+            if (dst[u] != 1e8 && dst[u] + wt < dst[v])
+            {
+                return {-1};
+            }
         }
         
         return dst;
