@@ -8,7 +8,7 @@ docker build -t cpp-env .
 
 ## Create the container
 ```sh
-docker run --name cpp-env -it -v /Users/kaushal/github/placements-2025:/usr/workspace cpp-env
+docker run --name cpp-env -it -v /Users/kaushal/Github/placements-2025/cses-problem-set:/usr/workspace cpp-env
 ```
 
 ## Start the container

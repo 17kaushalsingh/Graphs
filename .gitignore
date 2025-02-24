@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# Don’t ignore directories (so Git can search inside them)
+!*/
+
+# Re-include files that have an extension (i.e. contain a dot)
+!*.* 
