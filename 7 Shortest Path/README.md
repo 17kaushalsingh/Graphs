@@ -645,7 +645,7 @@ public:
 - Works for negative weight cycles and negative weights
 - Bellman is applicable only for DG
 - If undirected, represent it as directed with both way edges
-- TC: 
+- TC: ExV
 ## Algorithm
 - Edges can be in any order
 - Relax all edges in sequential order for n-1 times
@@ -653,6 +653,7 @@ public:
 - If relaxation can be done for n-th time ==> Negative Weighted Cycle Detected
 - Why N-1? Each iteration updates dst of 1 node
 ## Code
+https://www.geeksforgeeks.org/problems/distance-from-the-source-bellman-ford-algorithm/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=distance-from-the-source-bellman-ford-algorithm
 ```cpp
 class Solution {
   public:
@@ -699,6 +700,58 @@ class Solution {
         }
         
         return dst;
+    }
+};
+```
+
+# Floyd Warshall Algorithm
+- Multisource Shortest Path Algorithm
+- Finds shortest path from each node to every other node
+- Helps detect negative cycles as well
+- Works on Adjacency Matrix
+- TC: E<sup>3</sup>
+## Algorithm
+- Try to go via every path possible
+- After getting the final dst array if dst[i][j] < 0 ==> Negative cycle
+## Code
+https://www.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=implementing-floyd-warshall
+```cpp
+class Solution {
+  public:
+    void shortestDistance(vector<vector<int>>& mat) 
+    {
+        int n = mat.size();
+        
+        // mark diagonal nodes as 0
+        // mark no edges as INT_MAX
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) 
+            {
+                if (i == j) mat[i][j] = 0;
+                else if (mat[i][j] == -1) mat[i][j] = INT_MAX;
+            }
+        }
+        
+        for (int via=0; via<n; via++)
+        {
+            for (int i=0; i<n; i++)
+            {
+                for (int j = 0; j<n; j++)
+                {
+                    if (mat[i][via] != INT_MAX && mat[via][j] != INT_MAX)
+                    {
+                        mat[i][j] = min(mat[i][j], mat[i][via] + mat[via][j]);
+                    }
+                }
+            }
+        }
+        
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) 
+            {
+                if (mat[i][j] == INT_MAX) mat[i][j] = -1;
+            }
+        }
     }
 };
 ```
