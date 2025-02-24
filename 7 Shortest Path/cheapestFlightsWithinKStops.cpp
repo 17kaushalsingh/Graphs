@@ -9,7 +9,7 @@ class Solution {
     {
         vector<pair<int, int>> adj[n];
         
-        for (flight : flights)
+        for (auto flight : flights)
         {
             int u = flight[0];
             int v = flight[1];

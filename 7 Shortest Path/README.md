@@ -485,3 +485,51 @@ https://www.geeksforgeeks.org/problems/cheapest-flights-within-k-stops/1?utm_sou
     }
 };
 ```
+
+## Minimum Multiplications to reach End
+https://www.geeksforgeeks.org/problems/minimum-multiplications-to-reach-end/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=minimum-multiplications-to-reach-end
+```cpp
+class Solution 
+{
+  private:
+    
+  public:
+    int minimumMultiplications(vector<int>& arr, int start, int end) 
+    {
+        int n = arr.size();
+        
+        vector<int> steps(100001, INT_MAX);
+        queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q; // seteps, val
+        
+        q.push({0, start});
+        steps[start] = 0;
+        
+        while(!q.empty())
+        {
+            int step = q.front().first;
+            int val = q.front().second;
+            q.pop();
+            
+            if (val == end) return step;
+            
+            for (int i=0; i<n; i++)
+            {
+                int newVal = (val * arr[i]) % 100000;
+                
+                if (1 + step < steps[newVal])
+                {
+                    steps[newVal] = 1 + step;
+                    q.push({1+step, newVal});
+                }
+            }
+        }
+        
+        int ans = steps[end];
+        
+        if (ans == INT_MAX) return -1;
+        return ans;
+    }
+};
+```
+
+## 

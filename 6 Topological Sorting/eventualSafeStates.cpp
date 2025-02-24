@@ -11,9 +11,6 @@ using namespace std;
 class Solution 
 {
   public:
-  
-    
-  public:
     vector<int> eventualSafeNodes(int V, vector<int> adj[]) 
     {
         int n = V;
