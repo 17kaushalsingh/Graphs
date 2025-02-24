@@ -755,3 +755,78 @@ class Solution {
     }
 };
 ```
+
+## Find the City With the Smallest Number of Neighbours at a Threshold Distance
+- Use Floyd Warshall
+
+## Problem Link
+https://www.geeksforgeeks.org/problems/city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=city-with-the-smallest-number-of-neighbors-at-a-threshold-distance
+## Code
+```cpp
+class Solution 
+{
+  private:
+    void floydWarshall(int n, vector<vector<int>> &mat)
+    {
+        for (int via=0; via<n; via++)
+        {
+            for (int i=0; i<n; i++)
+            {
+                for (int j=0; j<n; j++)
+                {
+                    if (mat[i][via] != INT_MAX && mat[via][j] != INT_MAX)
+                        mat[i][j] = min(mat[i][j], mat[i][via] + mat[via][j]);
+                }
+            }
+        }
+    }
+    
+  public:
+    int findCity(int n, int m, vector<vector<int>>& edges, int distanceThreshold) 
+    {
+        // create the adj_mat
+        vector<vector<int>> mat(n, vector<int>(n, INT_MAX));
+        
+        for (int i=0; i<n; i++) mat[i][i] = 0;
+        
+        for (edge : edges)
+        {
+            int u = edge[0];
+            int v = edge[1];
+            int wt = edge[2];
+            
+            mat[u][v] = wt;
+            mat[v][u] = wt;
+        }
+        
+        
+        // perfor Floyd Warshall
+        floydWarshall(n, mat);
+        
+        int ansCity = -1;
+        int ansCnt = INT_MAX;
+        for (int city=0; city<n; city++)
+        {
+            int cnt = 0;
+            
+            for (int adjCity=0; adjCity<n; adjCity++)
+            {
+                if (city == adjCity) continue;
+                
+                if (mat[city][adjCity] <= distanceThreshold)
+                {
+                    cnt++;
+                }
+            }
+            
+            if (cnt <= ansCnt)
+            {
+                ansCity = city;
+                ansCnt = cnt;
+            }
+        }
+        
+        return ansCity;
+    }
+};
+```
