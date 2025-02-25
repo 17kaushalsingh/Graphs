@@ -1,12 +1,3 @@
-# Minimum Spanning Tree (MST)
-- Spanning Tree: Tree where <b> N nodes and N-1 edges </b>, and all nodes are reachable from each other
-- Minimum Spanning Tree: Spanning Tree with Minimum Sum of Edge Weights
-
-# Prim's Algorithm
-## Problem Link
-https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=minimum-spanning-tree
-## Code
-```cpp
 class Solution 
 {
   public:
@@ -59,9 +50,3 @@ class Solution
         return mstSum;
     }
 };
-```
-
-# Kruskel's Algorithm
-## Problem Link
-## Code
-
