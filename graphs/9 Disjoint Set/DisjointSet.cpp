@@ -18,7 +18,7 @@ public:
         {
             parent[i] = i; // each node is parent of itself
             rank[i] = 0; // each node is at rank 0
-            size[i] = 1; // each node is single node component
+            size[i] = 1; // each node is single node component, and hence of size 0
         }
     }
 
