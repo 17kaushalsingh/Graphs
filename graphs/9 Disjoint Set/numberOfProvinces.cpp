@@ -1,16 +1,10 @@
-# Disjoint Set
-- <b> getParent[node]? </b> Helps check if two nodes are part of the same component <b> (in constant time) </b>
-- Used mostly with <b> Dynamic Graphs </b>
-- <b> Union by Rank </b> TC - O(4 alpha) ~ constant
-- <b> Union by Size </b>: TC - O(4 alpha) ~ constant 
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
 
-# Problems on DisjointSet
-## Number of Provinces
-- Find number of ultimate nodes
-## Problem Link
-https://www.geeksforgeeks.org/problems/number-of-provinces/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=number-of-provinces
-## Code
-```cpp
+
+// } Driver Code Ends
+
 //User function Template for C++
 class DisjointSet
 {
@@ -108,4 +102,36 @@ class Solution {
         return numProvinces;
     }
 };
-```
+
+
+//{ Driver Code Starts.
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int V,x;
+        cin>>V;
+        
+        vector<vector<int>> adj;
+        
+        for(int i=0; i<V; i++)
+        {
+            vector<int> temp;
+            for(int j=0; j<V; j++)
+            {
+                cin>>x;
+                temp.push_back(x);
+            }
+            adj.push_back(temp);
+        }
+        
+
+        Solution ob;
+        cout << ob.numProvinces(adj,V) << endl;
+    
+cout << "~" << "\n";
+}
+    return 0;
+}
+// } Driver Code Ends
