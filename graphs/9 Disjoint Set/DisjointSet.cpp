@@ -45,7 +45,7 @@ public:
 
         // find rank of ulp_u and ulp_v
         int rank_ulp_u = rank[ulp_u];
-        int rank_ulp_v = rank(ulp_v);
+        int rank_ulp_v = rank[ulp_v];
 
         // connect the smaller rank tree to larger rank tree
 
@@ -75,7 +75,7 @@ public:
 
         // find size of ulp_u and ulp_v
         int size_ulp_u = size[ulp_u];
-        int size_ulp_v = size(ulp_v);
+        int size_ulp_v = size[ulp_v];
 
         // connect the smaller size tree to larger size tree
 

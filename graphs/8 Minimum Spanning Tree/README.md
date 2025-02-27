@@ -62,6 +62,10 @@ class Solution
 ```
 
 # Kruskel's Algorithm
-## Problem Link
-## Code
+- Sort alll the edges according to weight
 
+## Problem Link
+https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=minimum-spanning-tree
+## Code
+```cpp
+```
