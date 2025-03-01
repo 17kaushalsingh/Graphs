@@ -611,4 +611,5 @@ class Solution
 ```
 
 ## Most Stones Removed with Same Row or Column
-
+### Problem Link
+### Code
