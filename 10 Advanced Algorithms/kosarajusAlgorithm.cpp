@@ -1,16 +1,11 @@
-# Advanced Algorithms
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
 
-# Kosaraju's Algorithm (Strongly Connected Components)
-- Only valid for Directed Graphs
-- Number of SCCs
-- Print the SCCs
-### Algorithm
-- Step1: Sort the nodes in order of finish time of DFS
-- Step2: Reverse the graph
-- Step3: Perform DFS in order of finish time (sorted nodes)
-## Problem Link
-https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=strongly-connected-components-kosarajus-algo
-## Code
+
+// } Driver Code Ends
+
+//Position this line where user code will be pasted.
 class Solution 
 {
   private:
@@ -78,6 +73,32 @@ class Solution
         return scc;
     }
 };
-# Tarjan's Algorithm
 
-# Articulation Point in Graphf
+
+//{ Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int V, E;
+        cin >> V >> E;
+
+        vector<vector<int>> adj(V);
+
+        for (int i = 0; i < E; i++) {
+            int u, v;
+            cin >> u >> v;
+            adj[u].push_back(v);
+        }
+
+        Solution obj;
+        cout << obj.kosaraju(adj) << "\n";
+
+        // cout << "~"
+        //      << "\n";
+    }
+
+    return 0;
+}
+
+// } Driver Code Ends
