@@ -1,6 +1,6 @@
 # Advanced Algorithms
 
-# Kosaraju's Algorithm (Strongly Connected Components)
+## Kosaraju's Algorithm (Strongly Connected Components)
 - Only valid for Directed Graphs
 - Number of SCCs
 - Print the SCCs
@@ -8,9 +8,9 @@
 - Step1: Sort the nodes in order of finish time of DFS
 - Step2: Reverse the graph
 - Step3: Perform DFS in order of finish time (sorted nodes)
-## Problem Link
+### Problem Link
 https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=strongly-connected-components-kosarajus-algo
-## Code
+### Code
 class Solution 
 {
   private:
@@ -78,6 +78,75 @@ class Solution
         return scc;
     }
 };
-# Tarjan's Algorithm
+
+## Tarjan's Algorithm: Bridges in Graph
+- Bridge is an edge removing which increases the number of components
+- Print all the bridges
+### Algorithm
+- Require: tInsertion[], tLow[] (apart from parents)
+### Problem Link
+https://leetcode.com/problems/critical-connections-in-a-network/submissions/1561315940/
+### Code
+```cpp
+class Solution 
+{
+    int timer = 0;
+private:
+    void dfs(int node, int parent, vector<vector<int>> &adj, vector<bool> &vis, vector<int> &tInsertion, vector<int> &tLow, vector<vector<int>> &bridges)
+    {
+        vis[node] = true;
+
+        tInsertion[node] = tLow[node] = timer;
+        timer++;
+
+        for (int adjNode : adj[node])
+        {
+            if (adjNode == parent) continue;
+
+            if (!vis[adjNode])
+            {
+                dfs(adjNode, node, adj, vis, tInsertion, tLow, bridges);
+
+                tLow[node] = min(tLow[node], tLow[adjNode]);
+
+                // can node --> adjNode be a bridge
+                if (tLow[adjNode] > tInsertion[node]) bridges.push_back({node, adjNode});
+            }
+
+            else
+            {
+                tLow[node] = min(tLow[node], tLow[adjNode]);
+            }
+        }
+    }
+
+public:
+    vector<vector<int>> criticalConnections(int n, vector<vector<int>>& connections) 
+    {
+        vector<vector<int>> adj(n);
+
+        for (auto edge : connections)
+        {
+            adj[edge[0]].push_back(edge[1]);
+            adj[edge[1]].push_back(edge[0]);
+        }
+
+        vector<bool> vis(n, false);
+
+        vector<int> tInsertion(n), tLow(n);
+
+        vector<vector<int>> bridges;
+
+        for (int i=0; i<n; i++)
+        {
+            if (!vis[i]) dfs(i, -1, adj, vis, tInsertion, tLow, bridges);
+        }
+
+        return bridges;
+    }
+};
+```
+
+
 
 # Articulation Point in Graphf
