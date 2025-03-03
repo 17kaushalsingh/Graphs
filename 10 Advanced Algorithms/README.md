@@ -1,7 +1,8 @@
 # Advanced Algorithms
 
 <details>
-<summary> Kosaraju's Algorithm (Strongly Connected Components) </summary>
+<summary> <b> Kosaraju's Algorithm (Strongly Connected Components) </b> </summary>
+<br>
 - Only valid for Directed Graphs
 - Number of SCCs
 - Print the SCCs
@@ -13,6 +14,7 @@
 
 ### Problem Link
 https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=strongly-connected-components-kosarajus-algo
+
 ### Code
 
 ```cpp
@@ -86,8 +88,10 @@ class Solution
 ```
 </details>
 
+
 <details>
-<summary> Tarjan's Algorithm: Bridges in Graph </summary>
+<summary> <b> Tarjan's Algorithm: Bridges in Graph </b> </summary>
+<br>
 - Bridge is an edge removing which increases the number of components
 - Print all the bridges
 
@@ -161,7 +165,8 @@ public:
 
 
 <details>
-<summary> Articulation Point in Graph </summary>
+<summary> <b> Articulation Point in Graph </b> </summary>
+<br>
 -  Any node whose removal (along with all the edges associated with it) breaks the graph into multiple components
 
 ### Algorithm
