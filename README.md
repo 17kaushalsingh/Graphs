@@ -1,5 +1,9 @@
 # Graphs
 
+## Revision Lectures 
+    Lec 26
+    Lec 29, 30, 31 (Word Ladder problems)
+
 <details>
 <summary> 1. Basic Terms and Representation of Graphs </summary>
 
@@ -3549,8 +3553,3 @@ class Solution
 
 </details>
 
-<details>
-<summary>  Revision Lectures </summary>
-- Lec 26 <br>
-- Lec 29, 30, 31 (Word Ladder problems)
-</details>
