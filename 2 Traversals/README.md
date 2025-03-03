@@ -1,11 +1,12 @@
 # Traversals
 
 ## BFS Traversal (Level Order Traversal)
-    - Time: Nodes (N) + Degree (2xEdges for undirected, Edges for directed)
-    - Space: Nodes (N)
-    - Initial Configuration: Queue data structure having the starting node, isVisited array with starting node visited
-    - Algorithm: Start taking out from the front of queue and print/store, and then add its neighbour. Repeat until the queue is empty.
+- Time: Nodes (N) + Degree (2xEdges for undirected, Edges for directed) <br>
+- Space: Nodes (N) <br>
+- Initial Configuration: Queue data structure having the starting node, isVisited array with starting node visited <br>
+- Algorithm: Start taking out from the front of queue and print/store, and then add its neighbour. Repeat until the queue is empty.
 
+### Code
 ```cpp
 void bfsTraversal(int startNode, vector<int> adj[], vector<bool> &isVisited, vector<int> &bfsTraversalAns)
 {
@@ -32,11 +33,12 @@ void bfsTraversal(int startNode, vector<int> adj[], vector<bool> &isVisited, vec
 ```
 
 ## DFS Traversal
-    - Time: Nodes (N) + Degree (2xEdges for undirected, Edges for directed)
-    - Space: Nodes (N), Recursion Space Stack: Node (N)
-    - Initial Configuration: isVisited array
-    - Algorithm: Use recursion, mark the node as visited on entering the function and print/store it. Call the recursion on its neighbours if they are unvisited
+- Time: Nodes (N) + Degree (2xEdges for undirected, Edges for directed) <br>
+- Space: Nodes (N), Recursion Space Stack: Node (N) <br>
+- Initial Configuration: isVisited array <br>
+- Algorithm: Use recursion, mark the node as visited on entering the function and print/store it. Call the recursion on its neighbours if they are unvisited
 
+### Code
 ```cpp
 void dfsTraversal(int node, vector<int> adj[], vector<bool> &isVisited, vector<int> &dfsTraversalAns)
 {
