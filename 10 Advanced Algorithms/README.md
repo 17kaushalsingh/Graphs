@@ -1,6 +1,6 @@
 # Advanced Algorithms
 
-## <b> Kosaraju's Algorithm (Strongly Connected Components) </b>
+## Kosaraju's Algorithm (Strongly Connected Components)
 - Only valid for Directed Graphs <br>
 - Number of SCCs <br>
 - Print the SCCs <br>
@@ -83,7 +83,7 @@ class Solution
 ```
 
 
-## <b> Tarjan's Algorithm: Bridges in Graph </b>
+## Tarjan's Algorithm: Bridges in Graph
 - Bridge is an edge removing which increases the number of components <br>
 - Print all the bridges <br>
 - Require: tInsertion[], tLow[] (apart from parents)
@@ -152,7 +152,7 @@ public:
 };
 ```
 
-## <b> Articulation Point in Graph </b>
+## Articulation Point in Graph
 -  Any node whose removal (along with all the edges associated with it) breaks the graph into multiple components
 
 ### Problem Link

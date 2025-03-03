@@ -1,11 +1,11 @@
 # Minimum Spanning Tree (MST)
-- Spanning Tree: Tree where <b> N nodes and N-1 edges </b>, and all nodes are reachable from each other
+- Spanning Tree: Tree where N nodes and N-1 edges, and all nodes are reachable from each other <br>
 - Minimum Spanning Tree: Spanning Tree with Minimum Sum of Edge Weights
 
-# Prim's Algorithm
-## Problem Link
+## Prim's Algorithm
+### Problem Link
 https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=minimum-spanning-tree
-## Code
+### Code
 ```cpp
 class Solution 
 {
@@ -61,12 +61,11 @@ class Solution
 };
 ```
 
-# Kruskel's Algorithm
+## Kruskel's Algorithm
 - Sort alll the edges according to weight
-
-## Problem Link
+### Problem Link
 https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=minimum-spanning-tree
-## Code
+### Code
 ```cpp
 class DisjointSet
 {
