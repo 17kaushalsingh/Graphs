@@ -1,10 +1,11 @@
 # Disjoint Set
-- <b> getParent[node]? </b> Helps check if two nodes are part of the same component <b> (in constant time) </b>
-- Used mostly with <b> Dynamic Graphs </b>
-- <b> Union by Rank </b> TC - O(4 alpha) ~ constant
-- <b> Union by Size </b>: TC - O(4 alpha) ~ constant 
+- getParent[node]? Helps check if two nodes are part of the same component (in constant time) <br>
+- Used mostly with Dynamic Graphs <br>
+- Union by Rank TC - O(4 alpha) ~ constant <br>
+- Union by Size: TC - O(4 alpha) ~ constant <br>
 
 # Problems on DisjointSet
+
 ## Number of Provinces
 - Find number of ultimate nodes
 ### Problem Link
@@ -224,9 +225,9 @@ class Solution
 ```
 
 ## Accounts Merge
-- Use DisjointSet to represent persons
+- Use DisjointSet to represent persons <br>
 - Use map to track and map emails to persons
-### problem Link
+### Problem Link
 https://www.geeksforgeeks.org/problems/account-merge/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=account-merge
 ### Code
 ```cpp
@@ -467,7 +468,7 @@ class Solution
 ```
 
 ## Making a Large Island
-- Connect the nodes using set
+- Connect the nodes using set <br>
 - Try virtually replacing 0s to 1s
 ### Problem Link
 https://www.geeksforgeeks.org/problems/maximum-connected-group/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=maximum-connected-group
@@ -611,9 +612,9 @@ class Solution
 ```
 
 ## Most Stones Removed with Same Row or Column
-- Treat the individual row/col as a node
-- No need to consider individual cell as node
-- No need to combine individual stones
+- Treat the individual row/col as a node <br>
+- No need to consider individual cell as node <br>
+- No need to combine individual stones <br>
 - Combine rows and cols as a whole
 ### Problem Link
 https://www.geeksforgeeks.org/problems/maximum-stone-removal-1662179442/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=maximum-stone-removal
