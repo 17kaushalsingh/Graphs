@@ -1,11 +1,12 @@
 # Cycle Detection
-- Try to visit all the children (neighbours) of a node which are not parents
-- If such a node is already visited by someone else
+- Try to visit all the children (neighbours) of a node which are not parents <br>
+- If such a node is already visited by someone else <br>
 - It means there is a cycle
 
 ## Undirected Graph Using BFS
-
+### Problem Link
 https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1?itm_source=geeksforgeeks&itm_medium=article&itm_campaign=practice_card
+### Code
 ```cpp
 class Solution {
   public:
@@ -57,7 +58,9 @@ class Solution {
 ```
 
 ## Undirected Graph Using DFS
+### Problem Link
 https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1?itm_source=geeksforgeeks&itm_medium=article&itm_campaign=practice_card
+### Code
 ```cpp
 class Solution {
   public:
@@ -98,7 +101,9 @@ class Solution {
 
 ## Directed Graph Using DFS
 - Use a path visited array
+### Problem Link
 https://www.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=detect-cycle-in-a-directed-graph
+### Code
 ```cpp
 class Solution 
 {
@@ -146,7 +151,9 @@ class Solution
 
 ## Directed Graph Usinf BFS (Kahns Algorithm OR Topo Sort)
 - Check if the topoSort.size() == n_nodes
+### Problem Link
 https://www.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=detect-cycle-in-a-directed-graph
+### Code
 ```cpp
 class Solution 
 {
@@ -194,10 +201,12 @@ class Solution
 ```
 
 ## Eventual Safe States
-- Everyone who is part of the cycle 
-- And everyone who leads to a cycle can not be a safe node
+- Everyone who is part of the cycle <br>
+- And everyone who leads to a cycle can not be a safe node <br>
 - All others are safe nodes
+### Problem Link
 https://www.geeksforgeeks.org/problems/eventual-safe-states/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=eventual-safe-states
+### Code
 ```cpp
 class Solution 
 {
