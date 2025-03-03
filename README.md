@@ -1,13 +1,627 @@
+# Graphs
+
 <details>
 <summary> 1. Basic Terms and Representation of Graphs </summary>
+
+
+
 </details>
 
 <details>
 <summary> 2. Traversals </summary>
+
+
+
 </details>
 
 <details>
 <summary> 3. Questions On Traversals </summary>
+
+# Questions On Traversals
+
+## Number of Provinces
+### Problem Link
+https://www.geeksforgeeks.org/problems/number-of-provinces/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=number_of_provinces
+### Code
+```cpp
+class Solution 
+{
+  private:
+    void dfsTraversal(int node, vector<vector<int>> &adj, vector<bool> &isVisited)
+    {
+        isVisited[node] = true;
+        
+        for (int adjNode = 0; adjNode < adj[node].size(); adjNode++)
+        {
+            if (adjNode != node && adj[node][adjNode] == 1)
+            {
+                if (!isVisited[adjNode]) dfsTraversal(adjNode, adj, isVisited);
+            }
+        }
+    }
+    
+  public:
+    int numProvinces(vector<vector<int>> adj, int V) 
+    {
+        int numProvinces = 0;
+        
+        vector<bool> isVisited(V, false);
+        
+        for (int node=0; node<V; node++)
+        {
+            if (!isVisited[node])
+            {
+                numProvinces++;
+                dfsTraversal(node, adj, isVisited);
+            }
+        }
+        
+        return numProvinces;
+    }
+};
+```
+
+
+## Number of Islands in Matrix
+### Problem Link
+https://www.geeksforgeeks.org/problems/find-the-number-of-islands/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=find_the_number_of_islands
+### Code
+```cpp
+class Solution 
+{
+  private:
+  
+    bool isValid(int row, int col, int maxRow, int maxCol)
+    {
+        return (row >=0 && row < maxRow && col >= 0 && col < maxCol);
+    }
+    
+    void dfs(int row, int col, vector<vector<char>> &grid, vector<vector<bool>> &isVisited)
+    {
+        isVisited[row][col] = true;
+        
+        int delrow[] = {-1,-1,0,1,1,1,0,-1};
+        int delcol[] = {0,1,1,1,0,-1,-1,-1};
+        
+        for (int i=0; i<8; i++)
+        {
+            int nrow = row + delrow[i];
+            int ncol = col + delcol[i];
+            
+            if (isValid(nrow, ncol, grid.size(), grid[0].size()))
+            {
+                if (grid[nrow][ncol] == '1' && !isVisited[nrow][ncol])
+                {
+                    dfs(nrow, ncol, grid, isVisited);
+                }
+            }
+        }
+    }
+    
+  public:
+    // Function to find the number of islands.
+    int numIslands(vector<vector<char>>& grid) 
+    {
+        int m = grid.size();
+        int n = grid[0].size();
+        
+        vector<vector<bool>> isVisited(m, vector<bool>(n, false));
+        
+        int numOfIslands = 0;
+        
+        for (int i=0; i<m; i++)
+        {
+            for (int j=0; j<n; j++)
+            {
+                if (grid[i][j] == '1' && !isVisited[i][j])
+                {
+                    numOfIslands++;
+                    dfs(i, j, grid, isVisited);
+                }
+            }
+        }
+        
+        return numOfIslands;
+    }
+};
+```
+
+## Flood Fill Algorithm
+### Problem Link
+https://www.geeksforgeeks.org/problems/flood-fill-algorithm1856/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=flood-fill-algorithm
+### Code
+```cpp
+class Solution 
+{
+  private:
+    bool isValid(int row, int col, int maxRow, int maxCol)
+    {
+        return (row >= 0 && row < maxRow && col >= 0 && col < maxCol);
+    }
+    
+  public:
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) 
+    {
+        vector<vector<int>> ans = image;
+        
+        int n = ans.size();
+        int m = ans[0].size();
+        
+        vector<vector<bool>> isVisited(n, vector<bool>(m, false));
+        queue<pair<int, int>> q;
+        int startColor = ans[sr][sc];
+        
+        q.push(make_pair(sr, sc));
+        
+        while(!q.empty())
+        {
+            pair<int, int> p = q.front();
+            q.pop();
+            int row = p.first;
+            int col = p.second;
+            isVisited[row][col] = true;
+            ans[row][col] = newColor;
+            
+            int delrow[] = {-1,0,1,0};
+            int delcol[] = {0,1,0,-1};
+            
+            for (int i=0; i<4; i++)
+            {
+                int nrow = row + delrow[i];
+                int ncol = col + delcol[i];
+                
+                if (isValid(nrow, ncol, n, m))
+                {
+                    if (ans[nrow][ncol] == startColor && !isVisited[nrow][ncol])
+                    {
+                        q.push(make_pair(nrow, ncol));
+                    }
+                }
+            }
+        }
+        
+        return ans;
+    }
+};
+```
+
+## Rotten Oranges: Minimum Time to Rot All Oranges
+### Problem Link
+https://www.geeksforgeeks.org/problems/rotten-oranges2536/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=rotten_oranges
+### Code
+```cpp
+class Solution {
+  private:
+    bool isValid(int row, int col, int maxRow, int maxCol)
+    {
+        return (row >= 0 && row < maxRow && col >= 0 && col < maxCol);
+    }
+    
+    bool allOrangesRotten(int orangesRotten, int initialFreshOranges)
+    {
+        return (orangesRotten == initialFreshOranges);
+    }
+    
+  public:
+
+    int orangesRotting(vector<vector<int>>& mat) 
+    {
+        int n = mat.size();
+        int m = mat[0].size();
+        int initialFreshOranges = 0;
+        
+        // 0 means no oranage
+        // 1 means fresh
+        // 2 means rotten
+        vector<vector<int>> isVisited(n, vector<int>(m, 0)); 
+        
+        queue<pair<pair<int, int>, int>> q;
+        
+        // put all the oranges which are initially rotten
+        for (int i=0; i<n; i++)
+        {
+            for (int j=0; j<m; j++)
+            {
+                if (mat[i][j] == 1) initialFreshOranges++;
+                
+                if (mat[i][j] == 2)
+                {
+                    q.push(make_pair(make_pair(i, j), 0));
+                    isVisited[i][j] = 2;
+                }
+            }
+        }
+        
+        int ans = 0;
+        int orangesGettingRotten = 0;
+        // start processing until the queue is empty
+        while(!q.empty())
+        {
+            auto front = q.front();
+            q.pop();
+            
+            int row = front.first.first;
+            int col = front.first.second;
+            int time = front.second;
+            
+            ans = max(ans, time);
+            
+            int delrow[] = {-1,1,0,0};
+            int delcol[] = {0,0,-1,1};
+            
+            for (int i=0; i<4; i++)
+            {
+                int nrow = row + delrow[i];
+                int ncol = col + delcol[i];
+                
+                if (isValid(nrow, ncol, n, m))
+                {
+                    if (mat[nrow][ncol] == 1 && isVisited[nrow][ncol] != 2)
+                    {
+                        q.push(make_pair(make_pair(nrow, ncol), time+1));
+                        isVisited[nrow][ncol] = 2;
+                        orangesGettingRotten++;
+                    }
+                }
+            }
+        }
+        
+        if (allOrangesRotten(orangesGettingRotten, initialFreshOranges)) return ans;
+        else return -1;
+    }
+};
+```
+
+
+## Distance of Neareset Cell Having 1
+### Problem Link
+https://www.geeksforgeeks.org/problems/distance-of-nearest-cell-having-1-1587115620/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=distance-of-nearest-cell-having-1
+### Code
+```cpp
+class Solution 
+{
+  private:
+    bool isValid(int row, int col, int maxRow, int maxCol)
+    {
+        return (row >= 0 && row < maxRow && col >= 0 && col < maxCol);
+    }
+    
+  public:
+    vector<vector<int>> nearest(vector<vector<int>>& grid) 
+    {
+        int n = grid.size();
+        int m = grid[0].size();
+        
+        // take a queue and put all the 1s in it with distance as 0
+        vector<vector<int>> dst(n, vector<int>(m, INT_MAX)); // INTMAX means the cell has not been reached
+        
+        queue<pair<pair<int, int>, int>> q;
+        
+        for (int i=0; i<n; i++)
+        {
+            for (int j=0; j<m; j++)
+            {
+                if (grid[i][j] == 1)
+                {
+                    q.push({{i, j}, 0});
+                    dst[i][j] = 0;
+                }
+            }
+        }
+        
+        while(!q.empty())
+        {
+            int row = q.front().first.first;
+            int col = q.front().first.second;
+            int distance = q.front().second;
+            q.pop();
+            
+            // start iterating on its neighbours
+            int delrow[] = {-1,1,0,0};
+            int delcol[] = {0,0,-1,1};
+            
+            for (int i=0; i<4; i++)
+            {
+                int nrow = row + delrow[i];
+                int ncol = col + delcol[i];
+                
+                if (isValid(nrow, ncol, n, m) && dst[nrow][ncol] == INT_MAX)
+                {
+                    q.push({{nrow, ncol}, distance+1});
+                    dst[nrow][ncol] = distance+1;
+                }
+            }
+        }
+        
+        return dst;
+    }
+};
+```
+
+
+## Surrounded Regions: Replace Os with Xs
+- Figure out the Os on the boundary and any other Os connected with it <br>
+- Replace all other 0s except those found out
+### Problem Link
+https://www.geeksforgeeks.org/problems/replace-os-with-xs0052/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=replace-os-with-xs
+### Code
+```cpp
+class Solution 
+{
+  public:
+    vector<vector<char>> fill(vector<vector<char>>& mat) 
+    {
+        int n = mat.size();
+        int m = mat[0].size();
+        
+        // mark Os on the boundary
+        // -1 not visited
+        // 0 not on boundary or connected to it
+        // 1 on boundary or connected to it
+        vector<vector<int>> onBoundary(n, vector<int>(m, -1));
+        
+        queue<pair<int, int>> q;
+        
+        for (int i=0; i<n; i++)
+        {
+            if (mat[i][0] == 'O')
+            {
+                onBoundary[i][0] = 1;
+                q.push({i,0});
+            }
+            else onBoundary[i][0] = 0;
+            if (mat[i][m-1] == 'O')
+            {
+                onBoundary[i][m-1] = 1;
+                q.push({i,m-1});
+            }
+            else onBoundary[i][m-1] = 0;
+        }
+        
+        for (int j=0; j<m; j++)
+        {
+            if (mat[0][j] == 'O')
+            {
+                onBoundary[0][j] = 1;
+                q.push({0,j});
+            }
+            else onBoundary[0][j] = 0;
+            if (mat[n-1][j] == 'O') 
+            {
+                onBoundary[n-1][j] = 1;
+                q.push({n-1,j});
+            }
+            else onBoundary[n-1][j] = 0;
+        }
+        
+        while(!q.empty())
+        {
+            int row = q.front().first;
+            int col = q.front().second;
+            q.pop();
+            
+            int delrow[] = {1,-1,0,0};
+            int delcol[] = {0,0,-1,1};
+            
+            for (int i=0; i<4; i++)
+            {
+                int nrow = row + delrow[i];
+                int ncol = col + delcol[i];
+                
+                // if valid and unvisited
+                if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && onBoundary[nrow][ncol] == -1)
+                {
+                    if (mat[nrow][ncol] == 'O')
+                    {
+                        q.push({nrow, ncol});
+                        onBoundary[nrow][ncol] = 1;
+                    }
+                    else onBoundary[nrow][ncol] = 0;
+                }
+            }
+        }
+        
+        // All Os not connected with boundary are converted to X
+        // All Os on the bouundary remain 0s
+        vector<vector<char>> ans(n, vector<char>(m, 'X'));
+        for (int i=0; i<n; i++)
+        {
+            for (int j=0; j<m; j++)
+            {
+                if (mat[i][j] == 'O' && onBoundary[i][j] == 1) ans[i][j] = 'O';
+            }
+        }
+        
+        return ans;
+    }
+};
+```
+
+
+## Number of Enclaves: Multisource BFS
+### Problem Link
+https://www.geeksforgeeks.org/problems/number-of-enclaves/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=number-of-enclaves
+### Code
+```cpp
+class Solution 
+{
+  private:
+    bool isValid(int row, int col, int maxRow, int maxCol)
+  {
+      return (row >= 0 && col >= 0 && row < maxRow && col < maxCol);
+  }
+  
+  public:
+    int numberOfEnclaves(vector<vector<int>> &grid) 
+    {
+        int n = grid.size();
+        int m = grid[0].size();
+        
+        // any land cell on the boundary can lead to a jump off the grid
+        // which means any land cell 4 directionally connected to it can also lead to a jump
+        
+        vector<vector<int>> landCellOnBoundary(n, vector<int>(m, -1));
+        // -1 means not visited
+        // 0 means not connected with boundary
+        // 1 means connected with boundary
+        
+        queue<pair<int, int>> q;
+        
+        for (int i=0; i<n; i++)
+        {
+            // left col
+            if (grid[i][0] == 1)
+            {
+                q.push({i, 0});
+                landCellOnBoundary[i][0] = 1;
+            }
+            else landCellOnBoundary[i][0] = 0;
+            
+            // right col
+            if (grid[i][m-1] == 1)
+            {
+                q.push({i, m-1});
+                landCellOnBoundary[i][m-1] = 1;
+            }
+            else landCellOnBoundary[i][m-1] = 0;
+        }
+        
+        for (int j=0; j<m; j++)
+        {
+            // top row
+            if (grid[0][j] == 1)
+            {
+                q.push({0, j});
+                landCellOnBoundary[0][j] = 1;
+            }
+            else landCellOnBoundary[0][j] = 0;
+            
+            // bottom row
+            if (grid[n-1][j] == 1)
+            {
+                q.push({n-1, j});
+                landCellOnBoundary[n-1][j] = 1;
+            }
+            else landCellOnBoundary[n-1][j] = 0;
+        }
+        
+        while(!q.empty())
+        {
+            int row = q.front().first;
+            int col = q.front().second;
+            q.pop();
+            
+            // iterate on neighbours
+            int dr[] = {-1,1,0,0};
+            int dc[] = {0,0,1,-1};
+            
+            for (int i=0; i<4; i++)
+            {
+                int nrow = row + dr[i];
+                int ncol = col + dc[i];
+                
+                // if valid and unvisited
+                if (isValid(nrow, ncol, n, m) && landCellOnBoundary[nrow][ncol] == -1)
+                {
+                    if (grid[nrow][ncol] == 1)
+                    {
+                        q.push({nrow, ncol});
+                        landCellOnBoundary[nrow][ncol] = 1;
+                    }
+                    
+                    else landCellOnBoundary[nrow][ncol] = 0;
+                }
+            }
+        }
+        
+        int ans = 0;
+        for (int i=0; i<n; i++)
+        {
+            for (int j=0; j<m; j++)
+            {
+                if (grid[i][j] == 1 && landCellOnBoundary[i][j] != 1) ans++;
+            }
+        }
+        
+        return ans;
+    }
+};
+```
+
+
+## Number of Distinct Islands
+- Use base row and base col to distinguish identity of islands <br>
+- Subtrcat all cells from the coordinats of base cell <br>
+- Require a set to keep track of distinct elements
+### Problem Link
+https://www.geeksforgeeks.org/problems/number-of-distinct-islands/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=number-of-distinct-islands
+### Code
+```cpp
+class Solution 
+{
+  private:
+    bool isValid(int row, int col, int maxRow, int maxCol)
+    {
+        return (row >= 0 && col >= 0 && row < maxRow && col < maxCol);
+    }
+    
+    void dfs(int row, int col, vector<vector<int>>& grid, vector<vector<bool>> &isVisited, vector<pair<int, int>> &coordinates, int baseRow, int baseCol)
+    {
+        isVisited[row][col] = true;
+        coordinates.push_back({row-baseRow, col-baseCol});
+        
+        // iterate on neighbours
+        int dr[] = {1,-1,0,0};
+        int dc[] = {0,0,1,-1};
+        
+        for (int i=0; i<4; i++)
+        {
+            int nrow = row + dr[i];
+            int ncol = col + dc[i];
+            
+            // if valid and unvisited
+            if (isValid(nrow, ncol, grid.size(), grid[0].size()) && !isVisited[nrow][ncol])
+            {
+                if (grid[nrow][ncol] == 1)
+                {
+                    dfs(nrow, ncol, grid, isVisited, coordinates, baseRow, baseCol);
+                }
+            }
+        }
+        
+    }
+    
+  public:
+    int countDistinctIslands(vector<vector<int>>& grid) 
+    {
+        int n = grid.size();
+        int m = grid[0].size();
+        
+        vector<vector<bool>> isVisited(n, vector<bool>(m, false));
+        set<vector<pair<int, int>>> set;
+        
+        for (int i=0; i<n; i++)
+        {
+            for (int j=0; j<m; j++)
+            {
+                if (!isVisited[i][j] && grid[i][j] == 1)
+                {
+                    vector<pair<int, int>> coordinates;
+                    dfs(i, j, grid, isVisited, coordinates, i, j);
+                    set.insert(coordinates);
+                }
+            }
+        }
+        
+        int ans = set.size();
+        
+        return ans;
+    }
+};
+```
+
+
+
 </details>
 
 <details>

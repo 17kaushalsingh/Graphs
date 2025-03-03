@@ -1,7 +1,9 @@
 # Questions On Traversals
 
 ## Number of Provinces
+### Problem Link
 https://www.geeksforgeeks.org/problems/number-of-provinces/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=number_of_provinces
+### Code
 ```cpp
 class Solution 
 {
@@ -42,7 +44,9 @@ class Solution
 
 
 ## Number of Islands in Matrix
+### Problem Link
 https://www.geeksforgeeks.org/problems/find-the-number-of-islands/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=find_the_number_of_islands
+### Code
 ```cpp
 class Solution 
 {
@@ -104,7 +108,9 @@ class Solution
 ```
 
 ## Flood Fill Algorithm
+### Problem Link
 https://www.geeksforgeeks.org/problems/flood-fill-algorithm1856/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=flood-fill-algorithm
+### Code
 ```cpp
 class Solution 
 {
@@ -161,7 +167,9 @@ class Solution
 ```
 
 ## Rotten Oranges: Minimum Time to Rot All Oranges
+### Problem Link
 https://www.geeksforgeeks.org/problems/rotten-oranges2536/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=rotten_oranges
+### Code
 ```cpp
 class Solution {
   private:
@@ -247,7 +255,9 @@ class Solution {
 
 
 ## Distance of Neareset Cell Having 1
+### Problem Link
 https://www.geeksforgeeks.org/problems/distance-of-nearest-cell-having-1-1587115620/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=distance-of-nearest-cell-having-1
+### Code
 ```cpp
 class Solution 
 {
@@ -311,9 +321,11 @@ class Solution
 
 
 ## Surrounded Regions: Replace Os with Xs
-https://www.geeksforgeeks.org/problems/replace-os-with-xs0052/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=replace-os-with-xs
-- Figure out the Os on the boundary and any other Os connected with it
+- Figure out the Os on the boundary and any other Os connected with it <br>
 - Replace all other 0s except those found out
+### Problem Link
+https://www.geeksforgeeks.org/problems/replace-os-with-xs0052/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=replace-os-with-xs
+### Code
 ```cpp
 class Solution 
 {
@@ -408,7 +420,9 @@ class Solution
 
 
 ## Number of Enclaves: Multisource BFS
+### Problem Link
 https://www.geeksforgeeks.org/problems/number-of-enclaves/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=number-of-enclaves
+### Code
 ```cpp
 class Solution 
 {
@@ -517,10 +531,12 @@ class Solution
 
 
 ## Number of Distinct Islands
-https://www.geeksforgeeks.org/problems/number-of-distinct-islands/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=number-of-distinct-islands
-- Use base row and base col to distinguish identity of islands
-- Subtrcat all cells from the coordinats of base cell
+- Use base row and base col to distinguish identity of islands <br>
+- Subtrcat all cells from the coordinats of base cell <br>
 - Require a set to keep track of distinct elements
+### Problem Link
+https://www.geeksforgeeks.org/problems/number-of-distinct-islands/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=number-of-distinct-islands
+### Code
 ```cpp
 class Solution 
 {
