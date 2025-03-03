@@ -1,19 +1,20 @@
 # Bipartite Graphs
-- If you can color the graph with two colors such that no two adjacent nodes have the same color
-- Then it is a bipartite graph
-- A bipartite graph is a type of graph in which the set of vertices can be divided into two distinct groups (or partitions) such that no two vertices within the same group are adjacent.
-- In other words, all edges in the graph connect a vertex from one group to a vertex in the other group.
-- A bipartite graph can be colored with two colors such that no two adjacent vertices share the same color. This means we can divide the graph’s vertices into two distinct sets where:
-- All edges connect vertices from one set to vertices in the other set.
-- No edges exist between vertices within the same set.
+- If you can color the graph with two colors such that no two adjacent nodes have the same color, then it is a bipartite graph  <br>
+- A bipartite graph is a type of graph in which the set of vertices can be divided into two distinct groups (or partitions) such that no two vertices within the same group are adjacent <br>
+- In other words, all edges in the graph connect a vertex from one group to a vertex in the other group <br>
+- A bipartite graph can be colored with two colors such that no two adjacent vertices share the same color. This means we can divide the graph’s vertices into two distinct sets where: <br>
+-- All edges connect vertices from one set to vertices in the other set <br>
+-- No edges exist between vertices within the same set
 
 ## Properties of Bipartite Graphs:
-- No Odd-Length Cycles: A graph is bipartite if and only if it does not contain a cycle of odd length.
-- 2-Colorability: A bipartite graph can be colored using only two colors so that no two adjacent vertices have the same color.
-- Matching and Maximum Matching: Bipartite graphs are useful in optimization problems, such as maximum matching in job assignment problems.
+- No Odd-Length Cycles: A graph is bipartite if and only if it does not contain a cycle of odd length <br>
+- 2-Colorability: A bipartite graph can be colored using only two colors so that no two adjacent vertices have the same color <br>
+- Matching and Maximum Matching: Bipartite graphs are useful in optimization problems, such as maximum matching in job assignment problems
 
 ## Checking for Bipartite Graph Using BFS
+### Problem Link
 https://www.geeksforgeeks.org/problems/bipartite-graph/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=bipartite-graph
+### Code
 ```cpp
 class Solution {
   public:
@@ -56,7 +57,9 @@ class Solution {
 ```
 
 ## Checking for Bipartite Graph Using DFS
+### Problem Link
 https://www.geeksforgeeks.org/problems/bipartite-graph/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=bipartite-graph
+### Code
 ```cpp
 class Solution 
 {
