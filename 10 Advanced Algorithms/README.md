@@ -11,6 +11,7 @@
 ### Problem Link
 https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=strongly-connected-components-kosarajus-algo
 ### Code
+```cpp
 class Solution 
 {
   private:
@@ -78,6 +79,7 @@ class Solution
         return scc;
     }
 };
+```
 
 ## Tarjan's Algorithm: Bridges in Graph
 - Bridge is an edge removing which increases the number of components
@@ -149,4 +151,8 @@ public:
 
 
 
-# Articulation Point in Graphf
+# Articulation Point in Graph
+-  Any node whose removal (along with all the edges associated with it) breaks the graph into multiple components
+### Algorithm
+### Problem Link
+### Code
