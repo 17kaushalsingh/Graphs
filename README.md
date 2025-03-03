@@ -39,23 +39,18 @@
 
 # Advanced Algorithms
 
-<details>
-<summary> <b> Kosaraju's Algorithm (Strongly Connected Components) </b> </summary>
-<br>
-- Only valid for Directed Graphs
-- Number of SCCs
-- Print the SCCs
-
-### Algorithm
-- Step1: Sort the nodes in order of finish time of DFS
-- Step2: Reverse the graph
+## <b> Kosaraju's Algorithm (Strongly Connected Components) </b>
+- Only valid for Directed Graphs <br>
+- Number of SCCs <br>
+- Print the SCCs <br>
+- Step1: Sort the nodes in order of finish time of DFS <br>
+- Step2: Reverse the graph <br>
 - Step3: Perform DFS in order of finish time (sorted nodes)
 
 ### Problem Link
 https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=strongly-connected-components-kosarajus-algo
 
 ### Code
-
 ```cpp
 class Solution 
 {
@@ -125,16 +120,11 @@ class Solution
     }
 };
 ```
-</details>
 
 
-<details>
-<summary> <b> Tarjan's Algorithm: Bridges in Graph </b> </summary>
-<br>
-- Bridge is an edge removing which increases the number of components
-- Print all the bridges
-
-### Algorithm
+## <b> Tarjan's Algorithm: Bridges in Graph </b>
+- Bridge is an edge removing which increases the number of components <br>
+- Print all the bridges <br>
 - Require: tInsertion[], tLow[] (apart from parents)
 
 ### Problem Link
@@ -200,15 +190,9 @@ public:
     }
 };
 ```
-</details>
 
-
-<details>
-<summary> <b> Articulation Point in Graph </b> </summary>
-<br>
+## <b> Articulation Point in Graph </b>
 -  Any node whose removal (along with all the edges associated with it) breaks the graph into multiple components
-
-### Algorithm
 
 ### Problem Link
 https://www.geeksforgeeks.org/problems/articulation-point-1/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=articulation-point
@@ -278,8 +262,6 @@ class Solution
     }
 };
 ```
-</details>
-
 
 </details>
 
