@@ -1,9 +1,11 @@
 # Shortest Path
 
-## Directed Acyclic Graph - Topological Sort
-- Get topoSort answer in stack
+# Directed Acyclic Graph - Topological Sort
+- Get topoSort answer in stack <br>
 - Take the nodes from stack and start relaxing edges
+### Problem Link
 https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=direct-acyclic-graph
+### Code
 ```cpp
 class Solution 
 {
@@ -78,9 +80,11 @@ class Solution
 };
 ```
 
-## Undirected Acyclic Graph - Unit Weights - Plain BFS
+# Undirected Acyclic Graph - Unit Weights - Plain BFS
 - Plain BFS with relaxation of edges
+### Problem Link
 https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph-having-unit-distance/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=shortest-path-in-undirected-graph-having-unit-distance
+### Code
 ```cpp
 class Solution {
   public:
@@ -120,19 +124,25 @@ class Solution {
 ```
 
 ## Word Lader 1
+### Problem Link
+### Code
 
 ## Word Ladder 2
+### Problem Link
+### Code
 
 # Dijkstras Algorithm
-- TC: E logV
+- TC: E logV <br>
 - Can be done via Queue, PriorityQueue or Set
 
 ## Using Priority Queue
-- Require a minHeap data structure
-- Does not work for cycles and negative edge weights
-- TC: E logV
+- Require a minHeap data structure <br>
+- Does not work for cycles and negative edge weights <br>
+- TC: E logV <br>
 - Why PQ: Saves some iterations
+### Problem Link
 https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=implementing-dijkstra-set-1-adjacency-matrix
+### Code
 ```cpp
 class Solution {
   public:
@@ -176,11 +186,13 @@ class Solution {
 ```
 
 ## Using Set
-- Set stores unique values and in sorted order (ascending order, the smallest at the top)
-- Set can erase some elements to optimize the iterations
-- Investing logN to delete an element and save some iterations later
+- Set stores unique values and in sorted order (ascending order, the smallest at the top) <br>
+- Set can erase some elements to optimize the iterations <br>
+- Investing logN to delete an element and save some iterations later <br>
 - So can say much about which is better in terms of TC
+### Problem Link
 https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=implementing-dijkstra-set-1-adjacency-matrix
+### Code
 ```cpp
 class Solution {
   public:
@@ -224,9 +236,11 @@ class Solution {
 ```
 
 ## Printing Shortest Path
-- Modify Dijksras to try to remember where are you coming from
+- Modify Dijksras to try to remember where are you coming from <br>
 - Use a parent array to track where a new node is pushed from in the PQ
+### Problem Link
 https://www.geeksforgeeks.org/problems/shortest-path-in-weighted-undirected-graph/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=shortest-path-in-weighted-undirected-graph
+### Code
 ```cpp
 class Solution {
   public:
@@ -302,8 +316,10 @@ class Solution {
 ```
 
 ## Shortest Distance in Binary Maze
+### Problem Link
 https://www.geeksforgeeks.org/problems/shortest-path-in-a-binary-maze-1655453161/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=shortest-path-in-a-binary-maze
-```cppp
+### Code
+```cpp
 class Solution 
 {
   private:
@@ -368,7 +384,9 @@ class Solution
 ```
 
 ## Path with Minimum Effort
+### Problem Link
 https://www.geeksforgeeks.org/problems/path-with-minimum-effort/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=path-with-minimum-effort
+### Code
 ```cpp
 class Solution 
 {
@@ -429,9 +447,11 @@ class Solution
 
 
 ## Cheapest Flights Within K Stops
-- Make decision based on stops rather than price
+- Make decision based on stops rather than price <br>
 - No PQ required
+### Problem Link
 https://www.geeksforgeeks.org/problems/cheapest-flights-within-k-stops/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=cheapest-flights-within-k-stops
+### Code
 ```cpp
   public:
     int CheapestFLight(int n, vector<vector<int>>& flights, int src, int dst, int K)  
@@ -487,7 +507,9 @@ https://www.geeksforgeeks.org/problems/cheapest-flights-within-k-stops/1?utm_sou
 ```
 
 ## Minimum Multiplications to reach End
+### Problem Link
 https://www.geeksforgeeks.org/problems/minimum-multiplications-to-reach-end/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=minimum-multiplications-to-reach-end
+### Code
 ```cpp
 class Solution 
 {
@@ -533,10 +555,12 @@ class Solution
 ```
 
 ## Number of Ways to Arrive at a Destination
-- Have a ways array to count the num ways to arrive at a destination
-- == means a new path with same min dis/time
+- Have a ways array to count the num ways to arrive at a destination <br>
+- == means a new path with same min dis/time <br>
 - < means a new path with the better dis/time
+### Problem Link
 https://www.geeksforgeeks.org/problems/number-of-ways-to-arrive-at-destination/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=%2Fnumber-of-ways-to-arrive-at-destination
+### Code
 ```cpp
 class Solution 
 {
@@ -594,7 +618,9 @@ class Solution
 ```
 
 ## Network Delay Time
+### Problem Link
 https://leetcode.com/problems/network-delay-time/submissions/1553575181/
+### Code
 ```cpp
 class Solution {
 public:
@@ -642,18 +668,18 @@ public:
 ```
 
 # Bellman Ford Algorithm
-- Works for negative weight cycles and negative weights
-- Bellman is applicable only for DG
-- If undirected, represent it as directed with both way edges
-- TC: ExV
-## Algorithm
-- Edges can be in any order
-- Relax all edges in sequential order for n-1 times
-- Relax: dst[u] + wt < dst[v] ==> update dst[v]
-- If relaxation can be done for n-th time ==> Negative Weighted Cycle Detected
-- Why N-1? Each iteration updates dst of 1 node
-## Code
+- Works for negative weight cycles and negative weights <br>
+- Bellman is applicable only for DG <br>
+- If undirected, represent it as directed with both way edges <br>
+- TC: ExV <br>
+- Step 1: Edges can be in any order <br>
+- Step 2: Relax all edges in sequential order for n-1 times <br>
+- Step 3: Relax: dst[u] + wt < dst[v] ==> update dst[v] <br>
+- Step 4:If relaxation can be done for n-th time ==> Negative Weighted Cycle Detected <br>
+- Why N-1? Each iteration updates dst of 1 node <br>
+### Problem Link
 https://www.geeksforgeeks.org/problems/distance-from-the-source-bellman-ford-algorithm/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=distance-from-the-source-bellman-ford-algorithm
+### Code
 ```cpp
 class Solution {
   public:
@@ -705,16 +731,16 @@ class Solution {
 ```
 
 # Floyd Warshall Algorithm
-- Multisource Shortest Path Algorithm
-- Finds shortest path from each node to every other node
-- Helps detect negative cycles as well
-- Works on Adjacency Matrix
+- Multisource Shortest Path Algorithm <br>
+- Finds shortest path from each node to every other node <br>
+- Helps detect negative cycles as well <br>
+- Works on Adjacency Matrix <br>
 - TC: E<sup>3</sup>
-## Algorithm
-- Try to go via every path possible
-- After getting the final dst array if dst[i][j] < 0 ==> Negative cycle
-## Code
+- Step 1: Try to go via every path possible <br>
+- Step 2: After getting the final dst array if dst[i][j] < 0 ==> Negative cycle
+### Problem Link
 https://www.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=implementing-floyd-warshall
+### Code
 ```cpp
 class Solution {
   public:
@@ -758,10 +784,9 @@ class Solution {
 
 ## Find the City With the Smallest Number of Neighbours at a Threshold Distance
 - Use Floyd Warshall
-
-## Problem Link
+### Problem Link
 https://www.geeksforgeeks.org/problems/city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=city-with-the-smallest-number-of-neighbors-at-a-threshold-distance
-## Code
+### Code
 ```cpp
 class Solution 
 {
