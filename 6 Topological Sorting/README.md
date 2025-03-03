@@ -1,11 +1,13 @@
 # Topological Sorting
-- Only exists for DAG (Directed Acyclic Graphs)
-- Any linear ordering of nodes such that
-- If there is an edge between u and v
-- u always appers before v in the sorted list
+- Only exists for DAG (Directed Acyclic Graphs) <br>
+- Any linear ordering of nodes such that <br>
+- If there is an edge between u and v <br>
+- u always appers before v in the sorted list <br>
 
 ## DFS Implementation
+### Problem Link
 https://www.geeksforgeeks.org/problems/topological-sort/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=topological-sort
+### Code
 ```cpp
 class Solution 
 {
@@ -49,7 +51,9 @@ class Solution
 
 ## BFS Implementation Kahn's Algorithm
 - use inDegree array
+### Problem Link
 https://www.geeksforgeeks.org/problems/topological-sort/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=topological-sort
+### Code
 ```cpp
 class Solution 
 {
@@ -102,7 +106,9 @@ class Solution
 
 
 ## Course Scheduler I
+### Problem Link
 https://www.geeksforgeeks.org/problems/prerequisite-tasks/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=prerequisite-tasks
+### Code
 ```cpp
 class Solution 
 {
@@ -160,7 +166,9 @@ class Solution
 ```
 
 ## Course Scheduler II
+### Problem Link
 https://www.geeksforgeeks.org/problems/course-schedule/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=course-schedule
+### Code
 ```cpp
 class Solution
 {
@@ -218,9 +226,11 @@ class Solution
 
 
 ## Eventual Safe States
-- Reverse the edges of the graph
+- Reverse the edges of the graph <br>
 - Perform a basic Topo Sort, return topo vector of the reversed graph
+### Problem Link
 https://www.geeksforgeeks.org/problems/eventual-safe-states/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=eventual-safe-states
+### Code
 ```cpp
 class Solution 
 {
@@ -282,10 +292,12 @@ class Solution
 
 
 ## Alien Dictionary
-- Represent chars as nodes of a graph
-- Figure out why a word appears before the other and create the graph basis that
+- Represent chars as nodes of a graph <br>
+- Figure out why a word appears before the other and create the graph basis that <br>
 - Apply topologocal sort
+### Problem Link
 https://www.geeksforgeeks.org/problems/alien-dictionary/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=alien-dictionary
+### Code
 ```cpp
 class Solution 
 {
