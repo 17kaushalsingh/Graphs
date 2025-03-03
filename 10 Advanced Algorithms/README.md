@@ -155,4 +155,69 @@ public:
 -  Any node whose removal (along with all the edges associated with it) breaks the graph into multiple components
 ### Algorithm
 ### Problem Link
+https://www.geeksforgeeks.org/problems/articulation-point-1/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=articulation-point
 ### Code
+```cpp
+class Solution 
+{
+  int timer = 0;
+  
+  private:
+    void dfs(int node, int parent, vector<int>adj[], vector<bool> &vis, vector<int> &tInsertion, vector<int> &tLow, vector<bool> &isArticulation)
+    {
+        vis[node] = true;
+        int child = 0;
+        
+        tInsertion[node] = tLow[node] = timer;
+        timer++;
+        
+        for (int adjNode : adj[node])
+        {
+            if (adjNode == parent) continue;
+            
+            if (! vis[adjNode])
+            {
+                child++;
+                dfs(adjNode, node, adj, vis, tInsertion, tLow, isArticulation);
+                
+                tLow[node] = min(tLow[node], tLow[adjNode]);
+                
+                // can node be an articulation point
+                // tLow[adjNode] < tInsertion[node] okay
+                if (parent != -1 && tLow[adjNode] >= tInsertion[node]) isArticulation[node] = true;
+            }
+            
+            else
+            {
+                tLow[node] = min(tLow[node], tInsertion[adjNode]);
+            }
+        }
+        
+        if (parent == -1 && child > 1) isArticulation[node] = true;
+    }
+    
+  public:
+    vector<int> articulationPoints(int n, vector<int>adj[]) 
+    {
+        vector<bool> vis(n, false);
+        
+        vector<int> tInsertion(n), tLow(n);
+        
+        vector<bool> isArticulation(n, false);
+        
+        for (int i=0; i<n; i++)
+        {
+            if (!vis[i]) dfs(i, -1, adj, vis, tInsertion, tLow, isArticulation);
+        }
+        
+        vector<int> ans;
+        for (int i=0; i<n; i++)
+        {
+            if (isArticulation[i]) ans.push_back(i);
+        }
+        
+        if (ans.size() == 0) return {-1};
+        return ans;
+    }
+};
+```
