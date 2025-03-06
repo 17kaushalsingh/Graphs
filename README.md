@@ -1624,13 +1624,138 @@ class Solution {
 };
 ```
 
+
 ## Word Lader 1
 ### Problem Link
+https://leetcode.com/problems/word-ladder/description/
 ### Code
+```cpp
+class Solution {
+public:
+    int ladderLength(string beginWord, string endWord, vector<string>& wordList) 
+    {
+        // create set for searching words in list
+        // set also works as vis array for bfs
+        set<string> set;
+        for (string word : wordList) set.insert(word);
+
+        queue<pair<string, int>> q;
+        q.push({beginWord, 1});
+        set.erase(beginWord);
+        int ans = 0;
+
+        while(!q.empty())
+        {
+            auto it = q.front();
+            string word = it.first;
+            int len = it.second;
+            q.pop();
+
+            if (word == endWord)
+            {
+                ans = len;
+                break;
+            }
+
+            // try changing every char of word
+            for (int i=0; i<word.size(); i++)
+            {
+                char orgCh = word[i];
+
+                for (char ch='a'; ch<='z'; ch++)
+                {
+                    word[i] = ch;
+
+                    if (set.find(word) != set.end())
+                    {
+                        q.push({word, len+1});
+                        set.erase(word);
+                    }
+                }
+
+                word[i] = orgCh;
+            }
+        }
+
+        return ans;
+    }
+};
+```
 
 ## Word Ladder 2
 ### Problem Link
-### Code
+https://www.geeksforgeeks.org/problems/word-ladder-ii/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=word-ladder-ii
+https://leetcode.com/problems/word-ladder-ii/description/
+### 
+```cpp
+class Solution {
+public:
+    vector<vector<string>> findSequences(string beginWord, string endWord, vector<string>& wordList) 
+    {
+        set<string> set;
+        for (string word : wordList) set.insert(word);
+        
+        queue<vector<string>> q;
+        vector<string> usedOnLevel;
+        int level = 0;
+        
+        q.push({beginWord});
+        usedOnLevel.push_back(beginWord);
+        
+        vector<vector<string>> ans;
+        while(!q.empty())
+        {
+            vector<string> vec = q.front();
+            q.pop();
+            
+            // check if prev level is fully used
+            if (vec.size() > level)
+            {
+                level++;
+                
+                for (string word : usedOnLevel) set.erase(word);
+                usedOnLevel.clear();
+            }
+            
+            string word = vec.back();
+            
+            if (word == endWord)
+            {
+                if (ans.size() == 0 || ans[0].size() == vec.size())
+                {
+                    ans.push_back(vec);
+                }
+            }
+            
+            for (int i=0; i<word.size(); i++)
+            {
+                char orgCh = word[i];
+                
+                for (char ch='a'; ch<='z'; ch++)
+                {
+                    word[i] = ch;
+                    if (set.find(word) != set.end())
+                    {
+                        // add to sequence
+                        vec.push_back(word);
+                        
+                        q.push(vec);
+                        usedOnLevel.push_back(word);
+                        
+                        // remove for next word in same sequence length
+                        vec.pop_back();
+                    }
+                }
+                
+                word[i] = orgCh;
+            }
+        }
+        
+        return ans;
+    }
+};
+```
+
 
 # Dijkstras Algorithm
 - TC: E logV <br>
